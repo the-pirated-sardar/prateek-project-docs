@@ -1,0 +1,30 @@
+# Platform / Core
+
+Platform / Core is the shared foundation beneath Prateek OS. It provides reusable infrastructure and engineering conventions without absorbing domain rules into a central “god service.” Its design is deterministic-first: explicit code, durable state, stable identities, and database constraints remain authoritative, while models are reserved for bounded judgement.
+
+## Status
+
+**IMPLEMENTED.** The accepted platform foundations target hosted DEV rather than Supabase PROD.
+
+## What to read
+
+| Document                                  | Best for                                                                                                         |
+| ----------------------------------------- | ---------------------------------------------------------------------------------------------------------------- |
+| [Study Guide](study-guide.md)             | Deep architecture, shared primitives, data and security boundaries, CI/runtime patterns, testing, and tradeoffs. |
+| [User Guide](user-guide.md)               | A practical explanation of where the platform appears and how to interpret system-level status and failures.     |
+| [OS Study Guide](../../os-study-guide.md) | The broader Prateek OS architecture and the principles shared by every domain.                                   |
+
+## In this system
+
+- Supabase/PostgreSQL persistence, transactions, migrations, constraints, and row-level security;
+- Patrick on Discord as an interaction surface, with authorization owned by explicit actor and channel policy;
+- small shared packages for database access, permissions, provenance, events, approvals, and other proven primitives;
+- deterministic identity, idempotency, leases, fencing, and bounded failure handling;
+- Node.js/TypeScript workspace, CI, formatting, testing, and runtime conventions;
+- hosted scheduling and local supervision patterns chosen according to workload and privacy needs.
+
+Platform / Core does not provide a general agent, an OS-wide query router, automatic Brain integration, or arbitrary workflow machinery.
+
+## Navigation
+
+[All systems](../README.md) · [Prateek OS documentation](../../README.md)

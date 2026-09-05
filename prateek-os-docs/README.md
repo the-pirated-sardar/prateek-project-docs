@@ -8,7 +8,7 @@ The design is deterministic-first: databases, explicit rules, stable identities,
 
 ## What this documentation contains
 
-Start with the [OS Study Guide](os-study-guide.md) for the shared architecture.
+Start with the [systems index](systems/README.md) for quick navigation or the [OS Study Guide](os-study-guide.md) for the shared architecture.
 
 | System                | What it does                                                                              | Study Guide                                           | User Guide                                         | Status                               |
 | --------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------- | ------------------------------------ |
