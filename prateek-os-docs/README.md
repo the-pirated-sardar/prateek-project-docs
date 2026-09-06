@@ -10,6 +10,12 @@ The design is deterministic-first: databases, explicit rules, stable identities,
 
 Start with the [systems index](systems/README.md) for quick navigation or the [OS Study Guide](os-study-guide.md) for the shared architecture.
 
+### Interaction layer
+
+**[Patrick](patrick/README.md)** is the canonical human-facing interaction identity/layer of Prateek OS. **Current:** Discord-first. **Future direction:** a coherent multi-surface interaction layer. Patrick is not a domain subsystem or authorization principal; see the [Patrick Study Guide](patrick/study-guide.md) and [Product Vision](patrick/vision.md).
+
+### Domain systems
+
 | System                | What it does                                                                              | Study Guide                                           | User Guide                                         | Status                               |
 | --------------------- | ----------------------------------------------------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------- | ------------------------------------ |
 | Platform / Core       | Shared monorepo, database, security, runtime, CI, and engineering patterns                | [Study](systems/platform-core/study-guide.md)         | [Use](systems/platform-core/user-guide.md)         | **IMPLEMENTED**                      |
@@ -34,6 +40,8 @@ flowchart LR
     C & JO & AM & PO --> DB[(Supabase PostgreSQL)]
     N1[Tech News Radar\nIN PROGRESS] -. planned Discord surfaces .-> P
 ```
+
+Patrick is shown above as the interaction layer connecting people to capabilities, not as another domain system. See the [Patrick documentation](patrick/README.md).
 
 Implemented systems run against hosted **DEV**, not Supabase PROD. JobOps scheduling runs on Railway; Patrick and the optional Application Materials worker use independently supervised local runtimes. Application Materials generation is presently paused even though its accepted persistence, recovery, validation, and approval architecture remains documented.
 

@@ -2,7 +2,7 @@
 
 [Documentation home](README.md)
 
-This guide explains the architecture shared by Prateek OS systems. Individual system guides then show how those patterns are specialized for [JobOps](systems/jobops/study-guide.md), [Application Materials](systems/application-materials/study-guide.md), [Capture](systems/capture/study-guide.md), [Personal Ops](systems/personal-ops/study-guide.md), and the in-progress [Tech News Radar](systems/tech-news-radar/study-guide.md).
+This guide explains the architecture shared by Prateek OS systems. The [Patrick Study Guide](patrick/study-guide.md) explains the cross-system interaction layer. Individual system guides then show how shared patterns are specialized for [JobOps](systems/jobops/study-guide.md), [Application Materials](systems/application-materials/study-guide.md), [Capture](systems/capture/study-guide.md), [Personal Ops](systems/personal-ops/study-guide.md), and the in-progress [Tech News Radar](systems/tech-news-radar/study-guide.md).
 
 > Source baseline: reconciled 2026-09-05 from canonical `main` observed at `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`. N1 was also inspected as a clean, committed feature-branch snapshot at `9693f07e4dd787173583e080d4a5beab7b576ce4`; it is not described as deployed or accepted.
 

@@ -13,6 +13,14 @@
 | Personal Ops          | Reconciled           | Implemented; hosted DEV                                     |
 | Tech News Radar       | In-progress snapshot | Feature-branch implementation; local, unhosted, unaccepted  |
 
+## Interaction layer
+
+| Layer   | Documentation status | Current implementation                   | Future direction                         |
+| ------- | -------------------- | ---------------------------------------- | ---------------------------------------- |
+| Patrick | Reconciled           | Discord-first interaction identity/layer | Coherent multi-surface interaction layer |
+
+Patrick is not a subsystem or milestone. Its [documentation](patrick/README.md) separates accepted current Discord behavior from explicitly future product vision.
+
 ## Next reconciliation triggers
 
 - N1 formal closeout.
