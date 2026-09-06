@@ -1,8 +1,14 @@
 # Documentation Status
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** Git refs; `docs/{PROJECT,ROADMAP,MILESTONES}.md`; `docs/source/active/`; `docs/adr/`; `docs/reviews/`; `services/`; `apps/`; and `supabase/migrations/`<br>
+> **Documentation status:** Mixed current/future
+
 - **Reconciled:** 2026-09-05
 - **Canonical `prateek-os` main observed:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`
-- **N1 snapshot:** separately inspected on the clean, committed `feat/n1-tech-news-radar` branch at `9693f07e4dd787173583e080d4a5beab7b576ce4`; still in progress, local, unhosted, and not formally accepted.
+- **N1 snapshot:** documentation is based on committed feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae`. Hosted DEV was activated from `41007e5`; corrected code through `2bd34e3` passed independent delta review, reactivation, and hosted reverification. Batched owner acceptance remains pending. N1 is not merged into canonical `main`, deployed to PROD, or formally closed.
 
 | System                | Documentation status | Implementation status                                       |
 | --------------------- | -------------------- | ----------------------------------------------------------- |
@@ -11,7 +17,7 @@
 | Application Materials | Reconciled           | Accepted architecture; generation runtime paused/unreliable |
 | Capture               | Reconciled           | Implemented; hosted DEV                                     |
 | Personal Ops          | Reconciled           | Implemented; hosted DEV                                     |
-| Tech News Radar       | In-progress snapshot | Feature-branch implementation; local, unhosted, unaccepted  |
+| Tech News Radar       | In-progress snapshot | Hosted DEV; correction verified; owner acceptance pending   |
 
 ## Interaction layer
 

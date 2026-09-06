@@ -1,10 +1,16 @@
 # Prateek OS — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; `docs/adr/`; `docs/reviews/`; `services/`; `apps/`; `packages/`; and `supabase/migrations/`<br>
+> **Documentation status:** Mixed current/future
+
 [Documentation home](README.md)
 
 This guide explains the architecture shared by Prateek OS systems. The [Patrick Study Guide](patrick/study-guide.md) explains the cross-system interaction layer. Individual system guides then show how shared patterns are specialized for [JobOps](systems/jobops/study-guide.md), [Application Materials](systems/application-materials/study-guide.md), [Capture](systems/capture/study-guide.md), [Personal Ops](systems/personal-ops/study-guide.md), and the in-progress [Tech News Radar](systems/tech-news-radar/study-guide.md).
 
-> Source baseline: reconciled 2026-09-05 from canonical `main` observed at `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`. N1 was also inspected as a clean, committed feature-branch snapshot at `9693f07e4dd787173583e080d4a5beab7b576ce4`; it is not described as deployed or accepted.
+> Source baseline: reconciled 2026-09-05 from canonical `main` observed at `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`. N1 content is tied to committed feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae`; corrected code through `2bd34e3` passed delta review and hosted reactivation/reverification, while owner acceptance, merge, PROD deployment, and closeout remain pending.
 
 ## 1. Project philosophy
 

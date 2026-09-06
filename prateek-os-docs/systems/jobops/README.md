@@ -1,5 +1,11 @@
 # JobOps
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/jobops/`; JobOps paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/000{1,2,3,4,5}-*.md`; and `docs/reviews/jobops/`<br>
+> **Documentation status:** Current
+
 JobOps is the job-discovery and attention-prioritization pipeline. It turns observations from supported public feeds and read-only job-alert email into canonical, explainable job records, then applies conservative eligibility and deterministic ranking before sending bounded Discord notifications.
 
 ## Status

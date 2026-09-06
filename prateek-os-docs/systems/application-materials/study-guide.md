@@ -1,5 +1,11 @@
 # Application Materials — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/application-materials/`; Application Materials paths in `apps/discord-bot/` and `ops/macos/`; `supabase/migrations/`; `docs/adr/{0007,0009,0010}-*.md`; and `docs/reviews/application-materials/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [OS model architecture](../../os-study-guide.md#10-model-and-prompt-architecture) · [User guide](user-guide.md)
 
 ## What problem it solves

@@ -1,5 +1,11 @@
 # Platform / Core — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `packages/`; `services/`; `apps/discord-bot/`; `ops/`; `.github/`; `package.json`; `pnpm-workspace.yaml`; `tsconfig*.json`; `eslint.config.mjs`; `vitest.config.ts`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; and `docs/adr/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [OS-wide guide](../../os-study-guide.md) · [User guide](user-guide.md)
 
 ## What problem it solves

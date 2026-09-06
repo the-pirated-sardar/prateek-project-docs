@@ -1,5 +1,11 @@
 # Capture
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/capture/`; `apps/capture-api/`; Capture paths in `apps/discord-bot/`; `packages/llm-router/`; `supabase/migrations/`; `docs/adr/0012-c3-natural-language-interpretation.md`; and `docs/reviews/capture/`<br>
+> **Documentation status:** Current
+
 Capture is the write-side ingress layer for Prateek OS. It preserves what an authorized user sent through Discord or an iOS entry point before attempting interpretation, then routes safe, typed actions to the domain that owns them. Capture owns ingress and provenance; it does not become the task planner or Calendar authority.
 
 ## Status

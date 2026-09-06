@@ -1,5 +1,11 @@
 # Application Materials
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/application-materials/`; Application Materials paths in `apps/discord-bot/` and `ops/macos/`; `supabase/migrations/`; `docs/adr/{0007,0009,0010}-*.md`; and `docs/reviews/application-materials/`<br>
+> **Documentation status:** Current
+
 Application Materials is the preparation pipeline for tailored resumes and cover letters. It combines a canonical JobOps record with verified personal evidence, uses bounded structured generation, and produces deterministic documents for private delivery and required human review. It never submits an application automatically.
 
 ## Status

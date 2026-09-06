@@ -1,5 +1,11 @@
 # Platform / Core
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `packages/`; `apps/discord-bot/`; `ops/`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; and `docs/adr/`<br>
+> **Documentation status:** Current
+
 Platform / Core is the shared foundation beneath Prateek OS. It provides reusable infrastructure and engineering conventions without absorbing domain rules into a central “god service.” Its design is deterministic-first: explicit code, durable state, stable identities, and database constraints remain authoritative, while models are reserved for bounded judgement.
 
 ## Status

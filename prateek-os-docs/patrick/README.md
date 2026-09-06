@@ -1,5 +1,11 @@
 # Patrick — Interaction Layer
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** `apps/discord-bot/`; `docs/{ARCHITECTURE,USER_GUIDE,ROADMAP}.md`; `docs/adr/0006-patrick-interaction-identity.md`; `docs/future/`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Mixed current/future
+
 [Documentation home](../README.md) · [OS study guide](../os-study-guide.md) · [Systems index](../systems/README.md)
 
 Patrick is the canonical human-facing interaction identity of Prateek OS. **Prateek** is the human owner, administrator, and actor; **Prateek OS** is the platform; **Patrick** is how that platform presents itself in direct human interaction; and **Pat** is an informal conversational alias. A useful shorthand is:
@@ -33,7 +39,7 @@ Accepted Discord interaction includes:
 - JobOps notifications and the reaction that requests Application Materials;
 - Application Materials command/status delivery surfaces, while generation is currently paused.
 
-Tech News Radar/N1 has local, in-progress Discord code, but it is not hosted, live, or formally accepted. Its planned commands, reactions, notifications, and editorial surfaces are therefore **not current Patrick behavior**.
+Tech News Radar/N1 was activated through Patrick on hosted DEV from an unmerged feature snapshot. Activation review found defects; corrections through `2bd34e3` passed delta review and hosted reactivation/reverification. Batched owner acceptance remains pending, and N1 is not canonical-main, PROD, or formally closed behavior.
 
 Patrick is the interface, not the authority. A conversational request does not create permission. The authenticated actor and role determine access, and each target system preserves its own authorization and approval rules. Patrick is also not canonical storage, a database, Recall, the Brain, a particular language model, or the whole operating system.
 
@@ -41,7 +47,7 @@ Patrick is the interface, not the authority. A conversational request does not c
 
 The long-term product direction is for Patrick to feel like one coherent assistant across Discord, chat, voice, calls, and other appropriate surfaces. “Jarvis-like” is useful only as an interaction/product-experience analogy: one recognizable identity, natural interaction, context-aware routing, continuity, and bounded proactive help across many underlying capabilities. It does **not** mean fictional omniscience, AGI, unrestricted autonomy, universal data access, or bypassing approval.
 
-Future Patrick may classify a request broadly as Capture, Query, or Command and route it to the system that owns the work. Recall may provide provenance-preserving answers over authoritative sources. Explicit Prateek OS ↔ Brain integration may later provide authorized context. None of those integrations exists today, and Patrick could never grant itself Brain access or become an authorization principal.
+Future Patrick may classify a request broadly as Capture, Query, or Command and route it to the system that owns the work. Recall may provide provenance-preserving answers over authoritative sources. Explicit Prateek OS ↔ [Brain](../../prateek-brain-docs/README.md) integration may later provide authorized context. None of those integrations exists today, and Patrick could never grant itself Brain access or become an authorization principal.
 
 The architectural goal is **one assistant, not one giant service**: consistent interaction above multiple bounded systems, not one opaque agent with universal credentials.
 

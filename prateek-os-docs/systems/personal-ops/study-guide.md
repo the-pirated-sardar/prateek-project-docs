@@ -1,5 +1,11 @@
 # Personal Ops — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/personal-ops/`; Personal Ops paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0011-personal-ops-task-calendar-approval-model.md`; and `docs/reviews/capture/{C2,C3}/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [OS approval architecture](../../os-study-guide.md#1-project-philosophy) · [User guide](user-guide.md)
 
 ## What problem it solves

@@ -1,5 +1,11 @@
 # Patrick — Product Vision
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** `docs/adr/0006-patrick-interaction-identity.md`; Patrick/Recall/call/Brain/model-routing files in `docs/future/`; `docs/{ROADMAP,PRIVACY,MODEL_POLICY}.md`; `apps/discord-bot/`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Vision
+
 [Patrick overview](README.md) · [Technical study guide](study-guide.md) · [Current user guide](user-guide.md)
 
 > **FUTURE PRODUCT / ARCHITECTURAL VISION:** Except for the Discord-first baseline explicitly identified below, this document describes direction, not current implementation, scheduling, or authorization to build. No stage carries a date unless separately established by the authoritative roadmap.
@@ -48,7 +54,7 @@ These stages describe conceptual maturity, not committed dates or a promise that
 
 ### Stage 1 — Discord-first Patrick (CURRENT)
 
-Patrick is the account-level Discord presentation identity for existing Prateek OS interaction. Explicit handlers connect messages, commands, buttons, reactions, and notifications to Capture, Personal Ops, JobOps, and Application Materials. Tech News Radar/N1 remains local and unaccepted. There is no general intent router, Recall, Brain integration, or cross-surface continuity.
+Patrick is the account-level Discord presentation identity for existing Prateek OS interaction. Explicit handlers connect messages, commands, buttons, reactions, and notifications to Capture, Personal Ops, JobOps, and Application Materials. Tech News Radar/N1 has additionally been activated on hosted DEV; its correction passed delta review and hosted reverification, while owner acceptance, merge, and closeout remain pending. There is no general intent router, Recall, Brain integration, or cross-surface continuity.
 
 ### Stage 2 — Richer natural interaction and routing (FUTURE)
 

@@ -1,8 +1,14 @@
 # Patrick — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials}/`; `docs/adr/0006-patrick-interaction-identity.md`; Recall/Patrick files in `docs/future/`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Mixed current/future
+
 [Patrick overview](README.md) · [User guide](user-guide.md) · [Product vision](vision.md) · [OS study guide](../os-study-guide.md)
 
-> **Status boundary:** Sections marked **CURRENT** describe accepted behavior. Sections marked **FUTURE ARCHITECTURE** describe product direction or planned concepts, not deployed capability. Tech News Radar/N1 remains **IN PROGRESS — LOCAL / NOT YET FORMALLY ACCEPTED**.
+> **Status boundary:** Sections marked **CURRENT** describe accepted behavior. Sections marked **FUTURE ARCHITECTURE** describe product direction or planned concepts, not deployed capability. Tech News Radar/N1 is **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING**, not merged, deployed to PROD, or formally closed.
 
 ## 1. Identity is not platform or authority
 
@@ -57,7 +63,7 @@ flowchart LR
     AM --> PD
     C --> PO
     C & PO & JO & AM --> DB[(Authoritative domain state)]
-    N1[Tech News Radar<br/>local / unaccepted] -. not current .-> PD
+    N1[Tech News Radar<br/>hosted DEV / owner acceptance pending] -. in-progress surfaces .-> PD
 ```
 
 ### Current event surfaces
@@ -73,7 +79,7 @@ flowchart LR
 | 📄 on a job notification   | Stored Discord identity resolves a canonical job and queues one idempotent Application Materials request. |
 | `/prepare`                 | Authorized Application Materials fallback/redelivery surface; current generation runtime remains paused.  |
 
-Tech News Radar commands and reactions are deliberately excluded from the current table. N1's inspected snapshot contains local Discord wiring, but it is not live or formally accepted.
+Tech News Radar commands and reactions are deliberately excluded from the accepted-current table. N1 was activated on hosted DEV, and its corrected snapshot passed delta review and hosted reactivation/reverification; it is not yet owner-accepted, merged, deployed to PROD, or formally closed.
 
 ### Explicit routing, not general intent routing
 
@@ -109,7 +115,7 @@ Patrick should not be equated with the model used by one capability. Current sys
 - Capture may use bounded model interpretation, while code validates the result and decides confidence/action behavior.
 - Application Materials may use generation, grounded evidence, and deterministic document validation; its runtime is currently paused.
 - Personal Ops planning and proposal application are deterministic.
-- Tech News Radar's local, unaccepted design contains optional grounded model assistance with deterministic fallback.
+- Tech News Radar's hosted-DEV, unaccepted design contains optional grounded model assistance with deterministic fallback.
 
 Conceptually:
 
@@ -188,7 +194,7 @@ Recall must not silently create truth, duplicate canonical ownership, or gain wr
 
 ## 9. FUTURE ARCHITECTURE — Patrick and Brain
 
-**Current fact:** Patrick does not consume Prateek Brain in any form.
+**Current fact:** Patrick does not consume [Prateek Brain](../../prateek-brain-docs/README.md) in any form.
 
 **Future possibility:** explicit Prateek OS ↔ Brain integration may give Patrick access to authorized context, potentially through Recall or another approved contract. The Brain remains a separate authority and its security model remains binding:
 

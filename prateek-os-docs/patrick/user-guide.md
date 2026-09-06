@@ -1,5 +1,11 @@
 # Patrick — User Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials}/`; current command/approval records in `docs/reviews/`; and N1 records in `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Current
+
 [Patrick overview](README.md) · [Technical study guide](study-guide.md) · [Product vision](vision.md)
 
 > **CURRENT GUIDE:** Patrick is currently encountered mainly through Discord. Chat, conversational voice, calls, Recall-backed questions, and general cross-system intent routing are future capabilities. Capture's accepted iOS voice Shortcut is a bounded Capture ingress, not a conversational Patrick voice surface.
@@ -21,7 +27,7 @@ The Discord username “Patrick” is a presentation setting. The Discord applic
 | Propose a Calendar event in natural language | Describe it in the Capture channel, then decide the separate proposal.             | [Capture](../systems/capture/user-guide.md)                             |
 | Review JobOps results                        | Read the configured new/hot job channels and inspect the actual posting.           | [JobOps](../systems/jobops/user-guide.md)                               |
 | Request application materials                | React 📄 on a persisted JobOps message or use `/prepare`; generation is paused.    | [Application Materials](../systems/application-materials/user-guide.md) |
-| Use Tech News Radar                          | **Unavailable today.** N1 is local, in progress, and not formally accepted.        | [Tech News Radar](../systems/tech-news-radar/user-guide.md)             |
+| Use Tech News Radar                          | **Hosted DEV; correction verified.** Batched owner acceptance remains pending.     | [Tech News Radar](../systems/tech-news-radar/user-guide.md)             |
 
 Channel names and availability are system configuration, not universal Patrick behavior. Use the linked guide for the accepted details and current status of each capability.
 
@@ -81,7 +87,7 @@ Patrick currently cannot:
 - continue one authoritative interaction across Discord, chat, voice, and calls;
 - provide conversational voice or telephone interaction as Patrick surfaces;
 - infer permission from natural language or bypass approval;
-- use Tech News Radar as a live accepted capability;
+- treat Tech News Radar's hosted-DEV acceptance surface as a merged/formally accepted capability;
 - restore the paused Application Materials generation worker merely by accepting a request.
 
 Those boundaries are intentional. See the [Product Vision](vision.md) for clearly labelled future direction rather than current instructions.

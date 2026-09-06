@@ -1,5 +1,11 @@
 # Personal Ops — User Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/personal-ops/`; Personal Ops paths in `apps/discord-bot/`; and `docs/reviews/capture/{C2,C3}/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [Technical study guide](study-guide.md)
 
 ## What it does

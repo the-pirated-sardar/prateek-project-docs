@@ -1,8 +1,14 @@
 # Tech News Radar — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`); canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** In progress
+
 [Documentation home](../../README.md) · [OS model/scoring architecture](../../os-study-guide.md#10-model-and-prompt-architecture) · [User guide](user-guide.md)
 
-> **IN PROGRESS — LOCAL / NOT YET FORMALLY ACCEPTED.** This guide reflects the coherent, committed `feat/n1-tech-news-radar` feature-branch snapshot at `9693f07e4dd787173583e080d4a5beab7b576ce4`, inspected on 2026-09-05. No N1 hosted migration, live Discord registration, live scheduled runtime, or owner acceptance is claimed. N1 documentation reflects an in-progress implementation snapshot and will be reconciled after milestone closeout.
+> **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING.** This guide reflects committed feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae`, inspected on 2026-09-05. Hosted DEV was activated from `41007e5`; review found defects, and corrections through `2bd34e3` passed independent delta review and hosted reactivation/reverification. N1 is not owner-accepted, merged, deployed to PROD, or formally closed.
 
 ## What problem it solves
 
@@ -31,7 +37,7 @@ flowchart LR
     EP --> Desk[#tech-desk pointer outline]
 ```
 
-Every box after fetching is present in some local/tested form, but the complete hosted/live path is not accepted.
+Every box after fetching is present, and the recurring path has run on hosted DEV. Activation review found issues in delivered presentation/readiness behavior; the corrections passed delta review and hosted reverification, and batched owner acceptance remains.
 
 ## Major components
 
@@ -110,7 +116,7 @@ Raw evidence retains URL/source/fetch/publish timestamps and bounded text. Full 
 - Discord reaction/command handlers are intended to verify actor and eligible channel before mutation.
 - Cost guards run before Brave/model calls.
 
-No hosted security state has been accepted yet; these are implemented/local contracts pending deployment review.
+Hosted-DEV activation evidence supports the intended RLS/service-only posture and constrained RPC surface. The corrected activation authority records delta review and hosted reverification; nothing implies owner acceptance, PROD deployment, merge, or formal milestone closeout.
 
 ## Integration architecture
 
@@ -124,15 +130,15 @@ No hosted security state has been accepted yet; these are implemented/local cont
 | `#tech-digest`   | Daily compact checkpoint at 18:30 `America/Vancouver`.                                                             |
 | `#tech-desk`     | Editorial Story Pipeline status and released pointer outlines.                                                     |
 
-Local code includes configuration/command/reaction routing. It has not been registered or owner-accepted on live Discord.
+The configuration, commands, reaction routing, and scheduled delivery surfaces were registered in hosted DEV. Correction delta review and reactivation checks passed; batched owner acceptance remains pending.
 
 ### Sources and Brave
 
-The inspected catalog contains a bounded set of real tech/editorial sources spanning general publications, Apple-focused sources, aggregation/HN, and a creator signal. The exact private operating list is not reproduced. Live local smoke evidence showed the RSS/HN ingest path could fetch hundreds of items with source-local health, but that is not hosted recurring proof.
+The inspected catalog contains a bounded set of real tech/editorial sources spanning general publications, Apple-focused sources, aggregation/HN, and a creator signal. The exact private operating list is not reproduced. Hosted-DEV evidence verified bounded recurring RSS/HN ingestion and source-local health, including post-correction reverification.
 
 ### Model providers
 
-N1 has its own editorial provider interface and Gemini/OpenAI implementations. A bounded real bake-off selected a fast low-cost Gemini model as default and retained an OpenAI alternate. That selection is not yet active in a hosted surfacing path. Release outlines and stash titles use a separate editorial-assist interface with deterministic fallback and model-run telemetry.
+N1 has its own editorial provider interface and Gemini/OpenAI implementations. A bounded real bake-off selected a fast low-cost Gemini model as default and retained an OpenAI alternate. The selected default has run in hosted-DEV editorial surfacing with bounded cost accounting. Release outlines and stash titles use a separate editorial-assist interface with deterministic fallback and model-run telemetry.
 
 ## Deterministic logic
 
@@ -286,15 +292,11 @@ Evidence completed locally includes:
 - source-coverage retrospective using public information;
 - multiple independent local reviews and correction passes.
 
-Still required before current/live claims:
+Hosted-DEV migration/configuration, recurring runtime observation, Discord registration, and post-correction reactivation/reverification occurred. Still required before formal closeout:
 
-- formal milestone reconciliation and accepted SHA;
-- hosted DEV migration/configuration;
-- recurring runtime observation;
-- real Discord command registration and all surface delivery paths;
-- owner testing of source controls, flags, feedback, manual submissions, digest, pipeline reactions/commands;
-- one real small pipeline release to `#tech-desk` and model-run/cost verification;
-- final review/gate/closeout.
+- batched owner testing of source controls, flags, feedback, manual submissions, digest quality, and pipeline reactions/commands;
+- one owner-accepted small pipeline release to `#tech-desk` with evidence/cost verification;
+- final milestone reconciliation, merge decision, and closeout gate.
 
 ## Engineering tradeoffs and lessons
 
@@ -309,15 +311,15 @@ Still required before current/live claims:
 
 ## Current limitations
 
-- Entire subsystem is local/in progress and not owner-usable today.
-- No hosted schedule, accepted live Discord messages, or production/DEV activation.
+- Hosted DEV was activated and corrected; owner acceptance is currently pending.
+- The feature branch is not merged and PROD is untouched.
 - Direct X/Reddit integration is explicitly excluded; indirect coverage is incomplete.
 - Current RSS parser is bounded, not a full XML implementation.
 - Source catalog has known topical asymmetries.
 - Preference accumulation has an accepted low-practical-risk non-atomic update debt before concurrent writers exist.
 - Model bake-off was small/single-run and used clean evidence.
-- No contemporaneous long-running editorial quality/recall measurement exists.
-- No real pipeline outline has been delivered.
+- No contemporaneous long-running editorial quality/recall measurement exists; activation evidence is an initial operational window.
+- No owner-accepted real pipeline outline has been recorded.
 
 ## Source map
 

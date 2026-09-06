@@ -1,5 +1,11 @@
 # Capture — Study Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/capture/`; `apps/capture-api/`; Capture paths in `apps/discord-bot/`; `packages/llm-router/`; `supabase/migrations/`; `docs/adr/0012-c3-natural-language-interpretation.md`; and `docs/reviews/capture/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [OS model architecture](../../os-study-guide.md#10-model-and-prompt-architecture) · [User guide](user-guide.md)
 
 ## What problem it solves

@@ -1,24 +1,30 @@
 # Tech News Radar — User Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`); canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** In progress
+
 [Documentation home](../../README.md) · [Technical study guide](study-guide.md)
 
-> **IN PROGRESS — LOCAL / NOT YET FORMALLY ACCEPTED. None of the workflows below should be treated as usable today.** They describe the intended, locally implemented N1 snapshot. N1 documentation reflects an in-progress implementation snapshot and will be reconciled after milestone closeout.
+> **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING.** Hosted DEV was activated from `41007e5`, but its review found defects. Corrections through `2bd34e3` passed independent delta review and hosted reactivation/reverification. Do not treat these workflows as owner-accepted, merged, PROD, or formally closed.
 
 ## What it does
 
-Tech News Radar is intended to turn bounded public tech-news sources into a deduplicated, clustered, personalized editorial stream. It will separate a broad browsable firehose from a curated radar, rare breaking alerts, a daily digest, and an editorial story-selection desk.
+Tech News Radar turns bounded public tech-news sources into a deduplicated, clustered, personalized editorial stream. It separates a broad browsable firehose from a curated radar, rare breaking alerts, a daily digest, and an editorial story-selection desk.
 
 ## Where I will use it
 
-| Channel          | Intended use                                                               | Current status                             |
-| ---------------- | -------------------------------------------------------------------------- | ------------------------------------------ |
-| `#tech-firehose` | What N1 is seeing after validation/dedupe, before personalized suppression | **IN PROGRESS; not live**                  |
-| `#tech-radar`    | Primary concise curated story stream                                       | **IN PROGRESS; not live**                  |
-| `#tech-breaking` | Rare major interrupt/promotions                                            | **IN PROGRESS; not live**                  |
-| `#tech-digest`   | Daily compact editorial checkpoint                                         | **IN PROGRESS; not live**                  |
-| `#tech-desk`     | Pipeline status and released pointer outlines                              | **IN PROGRESS; no real release delivered** |
+| Channel          | Use                                                                        | Current status                           |
+| ---------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
+| `#tech-firehose` | What N1 is seeing after validation/dedupe, before personalized suppression | **Hosted DEV; owner acceptance pending** |
+| `#tech-radar`    | Primary concise curated story stream                                       | **Hosted DEV; owner acceptance pending** |
+| `#tech-breaking` | Rare major interrupt/promotions                                            | **Hosted DEV; owner acceptance pending** |
+| `#tech-digest`   | Daily compact editorial checkpoint                                         | **Hosted DEV; owner acceptance pending** |
+| `#tech-desk`     | Pipeline status and released pointer outlines                              | **Registered; owner acceptance pending** |
 
-## Common workflows (intended)
+## Common workflows (hosted DEV)
 
 ### Read and react
 
@@ -35,13 +41,13 @@ The intended `/news-flag` control marks canonical story/topic state such as expl
 
 ### Manage sources
 
-The intended `/news-source` command lists/enables/disables bounded catalog sources for the authorized owner. The live handler/registration has not been accepted.
+The `/news-source` command lists/enables/disables bounded catalog sources for the authorized owner. The handler is registered on hosted DEV; owner interaction acceptance remains open.
 
-## Commands / reactions / controls (intended)
+## Commands / reactions / controls
 
-The intended controls are ✅/❌ preference reactions, 🎬/🧵 editorial-selection reactions, `/news-source`, `/news-flag`, and `/news-pipeline`. Every one remains **IN PROGRESS / NOT LIVE**. Their semantics are described below so the design can be reviewed without implying present availability.
+The controls are ✅/❌ preference reactions, 🎬/🧵 editorial-selection reactions, `/news-source`, `/news-flag`, and `/news-pipeline`. They were registered on hosted DEV but remain **IN PROGRESS / OWNER ACCEPTANCE PENDING**.
 
-## Editorial Story Pipeline (intended)
+## Editorial Story Pipeline
 
 ### Select stories
 
@@ -52,7 +58,7 @@ The intended controls are ✅/❌ preference reactions, 🎬/🧵 editorial-sele
 
 ### Commands
 
-The local `/news-pipeline` command defines:
+The hosted-DEV `/news-pipeline` command defines:
 
 | Command                     | Intended result                                                                 |
 | --------------------------- | ------------------------------------------------------------------------------- |
@@ -111,9 +117,7 @@ Canonical evidence remains even if ranking/model/delivery fails. Full article bo
 
 ## When something goes wrong
 
-Today, the correct interpretation is simply: N1 is not active. Do not expect messages, commands, reactions, digests, or releases to work.
-
-After future activation, intended safe behavior is:
+The intended safe behavior is:
 
 - source failure is isolated and retried/cooldown-managed;
 - duplicate story delivery is suppressed per surface;
@@ -124,13 +128,13 @@ After future activation, intended safe behavior is:
 
 ## Current limitations
 
-- No live/hosted/owner-accepted N1 workflow.
+- Hosted DEV was activated, corrected, and reverified; batched owner acceptance remains pending.
 - No direct X or Reddit integration/scraping.
 - Known source coverage gaps and small evaluation corpus.
-- No proven live daily digest or breaking quality.
-- No real `#tech-desk` release.
+- Digest scheduling and an initial Breaking promotion have runtime evidence, but quality needs longer owner observation.
+- No owner-accepted real `#tech-desk` release.
 - No auto-script, auto-post, or auto-publication.
 
 ## Planned improvements / closeout work
 
-The current milestone still needs hosted DEV deployment, live recurring operation, Discord registration and surface checks, real feedback/source/flag/manual-submission acceptance, digest proof, one bounded real editorial-pipeline release, final independent review, and closeout reconciliation. This guide must be updated from “intended” to “current” only for behavior that passes those gates.
+The current milestone needs real owner feedback/source/flag/manual-submission acceptance, digest-quality observation, one bounded real editorial-pipeline release, final milestone review, merge decision, and closeout reconciliation.

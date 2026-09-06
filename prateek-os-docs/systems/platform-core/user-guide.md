@@ -1,5 +1,11 @@
 # Platform / Core — User Guide
 
+> **Last updated:** 2026-09-05<br>
+> **Source repository:** `prateek-os`<br>
+> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source scope:** `packages/`; `apps/discord-bot/`; `ops/`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY}.md`; and deployment/acceptance records in `docs/reviews/`<br>
+> **Documentation status:** Current
+
 [Documentation home](../../README.md) · [Technical study guide](study-guide.md)
 
 ## What it does
