@@ -1,8 +1,8 @@
 # Platform / Core
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `packages/`; `apps/discord-bot/`; `ops/`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; and `docs/adr/`<br>
 > **Documentation status:** Current
 
@@ -10,7 +10,7 @@ Platform / Core is the shared foundation beneath Prateek OS. It provides reusabl
 
 ## Status
 
-**IMPLEMENTED.** The accepted platform foundations target hosted DEV rather than Supabase PROD.
+**IMPLEMENTED · HOSTED DEV.** Standardized through completed OS3 audit (2026-09-14). OS4 Supabase Offload & Backup Foundation is currently active/in progress: Three-Plane Hosted Activation landed on `main` at `e82862b` (Three-Plane hosted data cutover and backup-foundation CLI); Core source-table retirement, production backup deployment, and milestone closeout open.
 
 ## What to read
 
@@ -22,8 +22,8 @@ Platform / Core is the shared foundation beneath Prateek OS. It provides reusabl
 
 ## In this system
 
-- Supabase/PostgreSQL persistence, transactions, migrations, constraints, and row-level security;
-- Patrick on Discord as an interaction surface, with authorization owned by explicit actor and channel policy;
+- multi-plane persistence across Core Supabase, dedicated News Radar Supabase, and JobOps Neon, with `@prateek-os/backup-foundation` providing the accepted backup/restore foundation under active OS4 development;
+- centralized Patrick Gateway on Railway (`patrick-gateway`) under `@prateek-os/runtime-coordination` distributed lease protection;
 - small shared packages for database access, permissions, provenance, events, approvals, and other proven primitives;
 - deterministic identity, idempotency, leases, fencing, and bounded failure handling;
 - Node.js/TypeScript workspace, CI, formatting, testing, and runtime conventions;

@@ -1,8 +1,8 @@
 # JobOps — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/jobops/`; JobOps paths in `apps/discord-bot/`; `ops/`; and `docs/reviews/jobops/`<br>
 > **Documentation status:** Current
 
@@ -12,7 +12,7 @@
 
 JobOps automatically discovers Canadian job postings, keeps one canonical record per strongly identified posting, applies a conservative eligibility gate, calculates an explainable LAND priority score, and posts useful results to Discord.
 
-**Status: IMPLEMENTED · HOSTED DEV.** The scheduler runs on Railway against the DEV database. JobOps never applies, sends outreach, or makes an immigration determination.
+**Status: IMPLEMENTED · HOSTED DEV.** The scheduler runs on Railway against the dedicated JobOps Neon PostgreSQL database plane under OS4. JobOps never applies, sends outreach, or makes an immigration determination.
 
 ## Where I use it
 
@@ -86,7 +86,7 @@ Exact private weights and personal ranking configuration are not published here.
 - Missing job: it may have failed the eligibility gate, not yet been observed, or be outside current source coverage.
 - Duplicate-looking posts: strong identity may be insufficient to merge safely; the system prefers a false split to a false merge.
 - Source error: persistent failures appear in `#errors`; cooldown and later retry are automatic.
-- No PDF after 📄: the Application Materials worker/generation path is paused. The request may still be queued.
+- No PDF after 📄: the Application Materials worker is dormant with retirement scheduled in J5. The request may still be queued.
 - Never paste OAuth tokens, database keys, or email contents into Discord for diagnosis.
 
 ## Current limitations
@@ -99,4 +99,4 @@ Exact private weights and personal ranking configuration are not published here.
 
 ## Planned improvements
 
-J3 plans CRM, outreach preparation, follow-ups, and interview preparation, but remains later in the roadmap. Consequential outreach will still require approval; automated sending/applying is not current behavior.
+J5 is scheduled after R1; J3 (CRM, outreach preparation, follow-ups, and interview preparation) is deferred without a planned date. Consequential outreach will still require approval; automated sending/applying is not current behavior.

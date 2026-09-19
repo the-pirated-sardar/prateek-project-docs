@@ -1,8 +1,8 @@
 # Capture — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/capture/`; `apps/capture-api/`; Capture paths in `apps/discord-bot/`; `packages/llm-router/`; and `docs/reviews/capture/{C1,C2,C3}/`<br>
 > **Documentation status:** Current
 

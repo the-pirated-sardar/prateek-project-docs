@@ -1,8 +1,8 @@
 # Patrick — Product Vision
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `docs/adr/0006-patrick-interaction-identity.md`; Patrick/Recall/call/Brain/model-routing files in `docs/future/`; `docs/{ROADMAP,PRIVACY,MODEL_POLICY}.md`; `apps/discord-bot/`; and `docs/reviews/news-radar/N1/`<br>
 > **Documentation status:** Vision
 

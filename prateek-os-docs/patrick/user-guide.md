@@ -1,9 +1,9 @@
 # Patrick — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
-> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials}/`; current command/approval records in `docs/reviews/`; and N1 records in `docs/reviews/news-radar/N1/`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials,news-radar}/`; current command/approval records in `docs/reviews/`; and `docs/reviews/news-radar/N1/`<br>
 > **Documentation status:** Current
 
 [Patrick overview](README.md) · [Technical study guide](study-guide.md) · [Product vision](vision.md)
@@ -18,16 +18,16 @@ The Discord username “Patrick” is a presentation setting. The Discord applic
 
 ## Front door
 
-| What I want to do                            | Where/how I do it                                                                  | Detailed guide                                                          |
-| -------------------------------------------- | ---------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
-| Capture an idea, link, note, file, or task   | Post naturally in the configured Capture channel; exact prefixes are also allowed. | [Capture](../systems/capture/user-guide.md)                             |
-| Create a task with explicit hard fields      | Use `/task` with optional duration, earliest, and due values.                      | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
-| Inspect today's or this week's tasks         | Use `/today` or `/week`.                                                           | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
-| Propose a schedule                           | Use `/plan`, review the exact proposal, then Approve or Reject.                    | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
-| Propose a Calendar event in natural language | Describe it in the Capture channel, then decide the separate proposal.             | [Capture](../systems/capture/user-guide.md)                             |
-| Review JobOps results                        | Read the configured new/hot job channels and inspect the actual posting.           | [JobOps](../systems/jobops/user-guide.md)                               |
-| Request application materials                | React 📄 on a persisted JobOps message or use `/prepare`; generation is paused.    | [Application Materials](../systems/application-materials/user-guide.md) |
-| Use Tech News Radar                          | **Hosted DEV; correction verified.** Batched owner acceptance remains pending.     | [Tech News Radar](../systems/tech-news-radar/user-guide.md)             |
+| What I want to do                            | Where/how I do it                                                                     | Detailed guide                                                          |
+| -------------------------------------------- | ------------------------------------------------------------------------------------- | ----------------------------------------------------------------------- |
+| Capture an idea, link, note, file, or task   | Post naturally in the configured Capture channel; exact prefixes are also allowed.    | [Capture](../systems/capture/user-guide.md)                             |
+| Create a task with explicit hard fields      | Use `/task` with optional duration, earliest, and due values.                         | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
+| Inspect today's or this week's tasks         | Use `/today` or `/week`.                                                              | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
+| Propose a schedule                           | Use `/plan`, review the exact proposal, then Approve or Reject.                       | [Personal Ops](../systems/personal-ops/user-guide.md)                   |
+| Propose a Calendar event in natural language | Describe it in the Capture channel, then decide the separate proposal.                | [Capture](../systems/capture/user-guide.md)                             |
+| Review JobOps results                        | Read the configured new/hot job channels and inspect the actual posting.              | [JobOps](../systems/jobops/user-guide.md)                               |
+| Request application materials                | React 📄 on a persisted JobOps message or use `/prepare`; generation is paused.       | [Application Materials](../systems/application-materials/user-guide.md) |
+| Use Tech News Radar                          | Read `#tech-radar`, react ✅/❌ or 🎬/🧵, and manage pipelines with `/news-pipeline`. | [Tech News Radar](../systems/tech-news-radar/user-guide.md)             |
 
 Channel names and availability are system configuration, not universal Patrick behavior. Use the linked guide for the accepted details and current status of each capability.
 

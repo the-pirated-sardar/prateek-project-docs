@@ -1,8 +1,8 @@
 # Platform / Core — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `packages/`; `services/`; `apps/discord-bot/`; `ops/`; `.github/`; `package.json`; `pnpm-workspace.yaml`; `tsconfig*.json`; `eslint.config.mjs`; `vitest.config.ts`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; and `docs/adr/`<br>
 > **Documentation status:** Current
 
@@ -25,7 +25,7 @@ flowchart TB
     Patrick[Patrick / Discord] --> Domains[Domain services]
     API[HTTP / CLI adapters] --> Domains
     Domains --> Shared[Small shared packages]
-    Domains --> DB[(Supabase PostgreSQL)]
+    Domains --> DB[(Multi-Plane Storage)]
     M[Migrations] --> DB
     CI[CI] --> Apps[Apps + services + packages]
 ```
@@ -57,10 +57,10 @@ For a typical Discord action:
 
 - **Node.js/TypeScript:** one typed runtime across bot, CLIs, workers, HTTP, and tests. No formal language bake-off is recorded.
 - **pnpm workspaces:** one lockfile and shared gates, with package promotion only when a consumer exists.
-- **PostgreSQL/Supabase:** strong transactions and constraints plus a practical hosted/local toolchain.
+- **Multi-plane PostgreSQL / storage:** structured state lives across dedicated, bounded databases—Core Supabase (Capture, Personal Ops, Patrick Core), dedicated Radar Supabase, and JobOps Neon PostgreSQL; `@prateek-os/backup-foundation` provides the accepted backup/restore foundation under active OS4 development (production scheduling, retention, NAS destination, restore drills, and any optional cold offload remain unfinished).
 - **Discord:** immediate cross-device control surface instead of a custom dashboard.
 - **Vitest/ESLint/Prettier/TypeScript/GitHub Actions:** fast local feedback and exact-revision proof.
-- **Railway and launchd:** use finite hosted scheduling for JobOps; use local persistence when local tools/private runtime access matter.
+- **Railway and launchd:** Railway hosts the Patrick Gateway service under distributed lease coordination (`patrick:discord-gateway`) and finite hosted scheduling for JobOps cron runs; LaunchAgents provide optional local supervisor execution.
 
 Not built: a general event bus, queue platform, dependency-injection framework, vector database, agent framework, or custom authentication system. Those would add cost and new failure modes without a current consumer.
 
@@ -95,9 +95,9 @@ Domain tables such as `jobs` and `personal_ops_tasks` link into shared entities/
 The platform mediates, but does not erase, boundaries:
 
 - Discord Gateway receives interaction events; REST sends notifications and reactions.
-- Supabase owns structured state and atomic transitions.
-- Railway starts finite JobOps cron runs.
-- LaunchAgents supervise Patrick and optional local worker processes independently.
+- Multi-plane storage owns structured state and atomic transitions across Core Supabase, Radar Supabase, and JobOps Neon.
+- Railway runs the Patrick Gateway (`patrick-gateway`) under distributed lease coordination (`patrick:discord-gateway`) and finite JobOps cron runs.
+- LaunchAgents supervise optional local worker processes independently.
 - Google and Gmail adapters expose narrow domain operations and OAuth scopes.
 - Model providers sit behind typed provider-neutral seams.
 

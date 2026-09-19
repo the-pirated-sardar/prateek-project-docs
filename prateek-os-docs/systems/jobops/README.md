@@ -1,8 +1,8 @@
 # JobOps
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/jobops/`; JobOps paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/000{1,2,3,4,5}-*.md`; and `docs/reviews/jobops/`<br>
 > **Documentation status:** Current
 
@@ -10,7 +10,7 @@ JobOps is the job-discovery and attention-prioritization pipeline. It turns obse
 
 ## Status
 
-**IMPLEMENTED · HOSTED DEV.** Scheduled polling runs on Railway against the DEV database; JobOps does not apply to jobs, contact employers, or make immigration determinations.
+**IMPLEMENTED · HOSTED DEV.** Scheduled polling runs on Railway against the dedicated JobOps Neon PostgreSQL database plane under OS4; JobOps does not apply to jobs, contact employers, or make immigration determinations. J5 is scheduled after R1; J3 is deferred without a planned date.
 
 ## What to read
 

@@ -1,14 +1,14 @@
 # Patrick — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
-> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials}/`; `docs/adr/0006-patrick-interaction-identity.md`; Recall/Patrick files in `docs/future/`; and `docs/reviews/news-radar/N1/`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `apps/discord-bot/`; `services/{capture,personal-ops,jobops,application-materials,news-radar}/`; `docs/adr/0006-patrick-interaction-identity.md`; `docs/adr/0019-n1-centralized-patrick-runtime-and-replay-readiness.md`; Recall/Patrick files in `docs/future/`; and `docs/reviews/news-radar/N1/`<br>
 > **Documentation status:** Mixed current/future
 
 [Patrick overview](README.md) · [User guide](user-guide.md) · [Product vision](vision.md) · [OS study guide](../os-study-guide.md)
 
-> **Status boundary:** Sections marked **CURRENT** describe accepted behavior. Sections marked **FUTURE ARCHITECTURE** describe product direction or planned concepts, not deployed capability. Tech News Radar/N1 is **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING**, not merged, deployed to PROD, or formally closed.
+> **Status boundary:** Sections marked **CURRENT** describe accepted behavior. Sections marked **FUTURE ARCHITECTURE** describe product direction or planned concepts, not deployed capability. Tech News Radar (N1) is complete, formally closed, and merged to canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Patrick Gateway runs persistently on Railway (`patrick-gateway`) under distributed lease coordination.
 
 ## 1. Identity is not platform or authority
 
@@ -54,32 +54,37 @@ There is no standalone Patrick service. The shared bot runtime composes adapters
 ```mermaid
 flowchart LR
     U[Authorized Discord actor] --> G[Discord Gateway]
-    G --> D[Discord bot runtime<br/>explicit handlers]
+    G --> D[Patrick Gateway on Railway<br/>persistent discord-bot]
     D --> C[Capture]
     D --> PO[Personal Ops]
-    D --> AM[Application Materials]
+    D --> N1[Tech News Radar]
+    D -. review/status .-> AM[Application Materials\nDORMANT]
     D --> PD[Patrick Discord presentation]
     JO[JobOps scheduler] --> PD
-    AM --> PD
+    N1Scheduler[News Radar scheduler] --> PD
     C --> PO
-    C & PO & JO & AM --> DB[(Authoritative domain state)]
-    N1[Tech News Radar<br/>hosted DEV / owner acceptance pending] -. in-progress surfaces .-> PD
+    C & PO --> CoreDB[(Core Supabase)]
+    JO --> NeonDB[(JobOps Neon)]
+    N1 --> NewsDB[(News Radar Supabase)]
 ```
 
 ### Current event surfaces
 
-| Discord input/output       | Explicit current route                                                                                    |
-| -------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Message in Capture channel | Authorized message handler → Capture service → deterministic or bounded natural-language interpretation.  |
-| `/task`, `/today`, `/week` | Personal Ops handlers create or read canonical task state.                                                |
-| `/plan`                    | Personal Ops creates a point-in-time schedule proposal; a button decision gates Calendar application.     |
-| Confirmation buttons       | Persisted Capture confirmation lifecycle; approval may release a bounded action, rejection performs none. |
-| Calendar proposal buttons  | Persisted proposal decision and fenced apply path; the interface does not write Calendar directly.        |
-| Job notifications          | JobOps produces explainable, persisted Discord delivery through its own notification path.                |
-| 📄 on a job notification   | Stored Discord identity resolves a canonical job and queues one idempotent Application Materials request. |
-| `/prepare`                 | Authorized Application Materials fallback/redelivery surface; current generation runtime remains paused.  |
-
-Tech News Radar commands and reactions are deliberately excluded from the accepted-current table. N1 was activated on hosted DEV, and its corrected snapshot passed delta review and hosted reactivation/reverification; it is not yet owner-accepted, merged, deployed to PROD, or formally closed.
+| Discord input/output             | Explicit current route                                                                                    |
+| -------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| Message in Capture channel       | Authorized message handler → Capture service → deterministic or bounded natural-language interpretation.  |
+| `/task`, `/today`, `/week`       | Personal Ops handlers create or read canonical task state.                                                |
+| `/plan`                          | Personal Ops creates a point-in-time schedule proposal; a button decision gates Calendar application.     |
+| Confirmation buttons             | Persisted Capture confirmation lifecycle; approval may release a bounded action, rejection performs none. |
+| Calendar proposal buttons        | Persisted proposal decision and fenced apply path; the interface does not write Calendar directly.        |
+| Job notifications                | JobOps produces explainable, persisted Discord delivery through its own notification path.                |
+| 📄 on a job notification         | Stored Discord identity resolves a canonical job and queues one idempotent Application Materials request. |
+| `/prepare`                       | Authorized Application Materials fallback/redelivery surface; worker is currently dormant.                |
+| `#tech-firehose` / `#tech-radar` | Tech News Radar delivers validated/deduped feeds and curated radar stories.                               |
+| ✅ / ❌ reactions                | Replay-safe preference feedback on Tech News Radar stories.                                               |
+| 🎬 / 🧵 reactions                | Editorial Story Pipeline selection (primary / secondary active).                                          |
+| `/news-pipeline`                 | Manage, inspect, stash, trim, reset, or release editorial outlines to `#tech-desk`.                       |
+| `/news-source`, `/news-flag`     | Inspect/toggle catalog sources; mark stories as important or covered.                                     |
 
 ### Explicit routing, not general intent routing
 

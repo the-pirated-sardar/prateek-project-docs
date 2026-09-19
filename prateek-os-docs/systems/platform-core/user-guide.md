@@ -1,8 +1,8 @@
 # Platform / Core — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `packages/`; `apps/discord-bot/`; `ops/`; `supabase/migrations/`; `docs/{ARCHITECTURE,PRIVACY}.md`; and deployment/acceptance records in `docs/reviews/`<br>
 > **Documentation status:** Current
 
@@ -36,7 +36,7 @@ Platform/Core has no public slash commands of its own. Commands belong to domain
 
 ## What happens behind the scenes
 
-Patrick maps a Discord event to a typed domain request. The domain writes structured state to PostgreSQL, where constraints/RLS protect it. Long-running or recurring work is claimed with database leases. LaunchAgents supervise local processes; Railway starts finite JobOps schedule runs.
+Patrick maps a Discord event to a typed domain request. The domain writes structured state to PostgreSQL across dedicated database planes (Core Supabase, News Radar Supabase, or JobOps Neon), where constraints/RLS protect it. Long-running or recurring work is claimed with database leases. Railway runs the Patrick Gateway service under distributed lease coordination (`patrick:discord-gateway`) and starts finite JobOps schedule runs; LaunchAgents supervise optional local worker processes.
 
 ## What statuses mean
 
@@ -61,4 +61,4 @@ Do not paste secrets into Discord or chat. Capture the bounded error/status and 
 
 ## Planned improvements
 
-Reliability/cost work, future system controls, Recall, and cross-system query routing are planned or future. They are not current platform capabilities.
+OS4 production backup/restore deployment and remaining verification, future R1 (Reference Library, unfrozen scope), J5, and cross-system query routing are planned or future. They are not current platform capabilities.

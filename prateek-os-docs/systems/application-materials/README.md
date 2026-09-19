@@ -1,8 +1,8 @@
 # Application Materials
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/application-materials/`; Application Materials paths in `apps/discord-bot/` and `ops/macos/`; `supabase/migrations/`; `docs/adr/{0007,0009,0010}-*.md`; and `docs/reviews/application-materials/`<br>
 > **Documentation status:** Current
 
@@ -10,7 +10,7 @@ Application Materials is the preparation pipeline for tailored resumes and cover
 
 ## Status
 
-**IMPLEMENTED, BUT RUNTIME PAUSED / NOT RELIABLE END TO END.** The accepted persistence, recovery, validation, and approval architecture remains documented, but the worker is intentionally not installed or running. Requests can queue; processing is paused pending repair.
+**DORMANT · RETIREMENT SCHEDULED IN J5.** The accepted persistence, recovery, validation, and approval architecture remains documented, but the worker is dormant and not operating as an active owner workflow. Dedicated rehosting is deferred; owner-facing retirement and deactivation are scheduled in J5. Requests can queue; processing is paused.
 
 ## What to read
 

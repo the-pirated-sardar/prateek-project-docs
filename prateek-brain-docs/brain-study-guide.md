@@ -1,10 +1,10 @@
 # Prateek Brain — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-brain`<br>
-> **Source baseline:** canonical `main` `78324967005cccd0b36147e82647f8ef464e8918` (includes B2.6 acceptance records; corrected B2.6 implementation `2197ec7`); B2.7 in-progress evidence snapshot `721bd74ef9d6ad2a423626691361ad57d7755ad4`<br>
-> **Source scope:** `docs/{ARCHITECTURE,SECURITY_MODEL,PRIVACY,DATA_MODEL,B1_SCOPE,B2_SCOPE,B2_PHASE_PLAN}.md`; `docs/adr/`; `docs/reviews/`; `migrations/`; `src/`; and `tests/`<br>
-> **Documentation status:** Mixed current/future
+> **Source baseline:** canonical `main` `507be98f51ebece7d7c36d593786df39f0523e73`<br>
+> **Source scope:** `docs/{ARCHITECTURE,SECURITY_MODEL,PRIVACY,DATA_MODEL,B1_SCOPE,B2_SCOPE,B3_SCOPE}.md`; `docs/adr/`; `docs/reviews/`; `migrations/`; `src/`; and `tests/`<br>
+> **Documentation status:** Current
 
 [Documentation home](README.md) · [User guide](user-guide.md) · [Components](components/README.md) · [Status](STATUS.md)
 
@@ -204,6 +204,7 @@ Synthetic corpora are essential: they make truth and expected relationships revi
 
 ## 15. Current and future boundaries
 
-Canonical `main` includes accepted B2.0–B2.6. B2.6 adds isolated experimental/manual audit and comparison seams, not a production runtime path. Source records state that no live external comparison/audit call occurred. Any future live external call requires separate authorization and an `EGRESS_GRANT`; neither Codex nor a comparison service may become a production dependency.
-
-B2.7 is the scale/regression/closeout phase. Its implementation-side evidence is recorded on unmerged snapshot `721bd74`, pending independent closeout review; it changed no production code and does not make B2 canonically closed. B3 plans an MCP surface and importer framework. Patrick/OS/Recall integration, Discord controls, polished UI, and historical importers are not current. A future interface may request authorized Brain operations, but Patrick remains presentation/interaction—not policy, provenance, or authorization authority.
+- B1 and B2 are closed. B2.0–B2.7 accepted and closed out. B2.6 added isolated experimental/manual audit and comparison seams, not a production runtime path; no live external comparison or audit call occurred and neither Codex nor external comparison services are production dependencies.
+- B3 is in progress: B3.0 through B3.6 are complete and merged to canonical `main` `507be98f51ebece7d7c36d593786df39f0523e73` (including the importer framework and WhatsApp adapter). B3.7 is next and not started.
+- Operational historical-corpus rollout on `ops/b3-historical-corpus-rollout` (`f3f9caa`) is tracked separately as operational work and does not block B3 milestone progression.
+- Patrick/OS/Recall integration, Discord controls, and polished UI are not current. Brain remains an independent local-first memory system. A future interface may request authorized Brain operations, but Patrick remains presentation/interaction—not policy, provenance, or authorization authority.

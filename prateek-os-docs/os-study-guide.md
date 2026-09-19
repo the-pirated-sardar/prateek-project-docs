@@ -1,16 +1,16 @@
 # Prateek OS — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `docs/{ARCHITECTURE,PRIVACY,MODEL_POLICY}.md`; `docs/adr/`; `docs/reviews/`; `services/`; `apps/`; `packages/`; and `supabase/migrations/`<br>
 > **Documentation status:** Mixed current/future
 
 [Documentation home](README.md)
 
-This guide explains the architecture shared by Prateek OS systems. The [Patrick Study Guide](patrick/study-guide.md) explains the cross-system interaction layer. Individual system guides then show how shared patterns are specialized for [JobOps](systems/jobops/study-guide.md), [Application Materials](systems/application-materials/study-guide.md), [Capture](systems/capture/study-guide.md), [Personal Ops](systems/personal-ops/study-guide.md), and the in-progress [Tech News Radar](systems/tech-news-radar/study-guide.md).
+This guide explains the architecture shared by Prateek OS systems. The [Patrick Study Guide](patrick/study-guide.md) explains the cross-system interaction layer. Individual system guides then show how shared patterns are specialized for [JobOps](systems/jobops/study-guide.md), [Application Materials](systems/application-materials/study-guide.md), [Capture](systems/capture/study-guide.md), [Personal Ops](systems/personal-ops/study-guide.md), and [Tech News Radar](systems/tech-news-radar/study-guide.md).
 
-> Source baseline: reconciled 2026-09-05 from canonical `main` observed at `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`. N1 content is tied to committed feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae`; corrected code through `2bd34e3` passed delta review and hosted reactivation/reverification, while owner acceptance, merge, PROD deployment, and closeout remain pending.
+> Source baseline: reconciled 2026-09-19 from accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`). Tech News Radar (N1) is complete, formally closed, and merged to canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). OS3 System Audit & Standardization is closed (2026-09-14); OS4 Supabase Offload & Backup Foundation is in progress (Three-Plane hosted activation landed on `main` at `e82862b`).
 
 ## 1. Project philosophy
 
@@ -76,7 +76,7 @@ prateek-os/
 │   ├── application-materials/
 │   ├── capture/
 │   ├── personal-ops/
-│   └── news-radar/       # N1: local/in progress
+│   └── news-radar/       # N1: Tech News Radar
 ├── packages/             # small shared contracts/utilities
 │   ├── db/
 │   ├── llm-router/
@@ -100,9 +100,9 @@ One language covers Discord, HTTP, provider adapters, CLIs, scheduling logic, an
 
 Workspaces give atomic cross-package changes, one lockfile, and root quality gates without forcing every subsystem into a separately released package. The tradeoff is broader CI and the need to respect package dependency ownership.
 
-### Supabase PostgreSQL
+### Multi-Plane Data Architecture (Supabase, Neon, and Backup Foundation)
 
-PostgreSQL supplies relational integrity, transactions, indexes, constraints, functions, and row-level security. Supabase adds hosted Postgres, a generated HTTP API/client ecosystem, local development tooling, and managed authentication/storage capabilities. Prateek OS primarily uses it as structured live state; it is not treated as the eventual owner of every piece of durable personal memory.
+PostgreSQL supplies relational integrity, transactions, indexes, constraints, functions, and row-level security. Under OS4's Three-Plane architecture, live structured state is isolated into dedicated databases by domain: Core Supabase for Capture, Personal Ops, and Patrick Core state; dedicated News Radar Supabase for N1 ingestion, clustering, and editorial pipelines; and JobOps Neon for job search and demand intelligence. The `@prateek-os/backup-foundation` package provides the accepted backup/restore foundation under active OS4 development; production scheduling, retention, NAS destination, restore drills, and any optional cold offload remain unfinished. Databases are not treated as the eventual owner of durable personal memory, which belongs to the separate `prateek-brain` repository.
 
 ### Discord
 
@@ -110,11 +110,11 @@ Discord already provides authenticated users, private channels, mobile/desktop c
 
 ### Railway
 
-Railway runs finite scheduled JobOps dispatcher processes. It reduces server maintenance while keeping the TypeScript process portable. The tradeoff is platform-specific deployment configuration and confusing terminology: a Railway environment named “production” can still be configured against the Supabase DEV database. Database identity, not the Railway label, defines the data environment.
+Railway hosts both persistent and scheduled Prateek OS workloads. Patrick Gateway runs as a persistent service (`patrick-gateway`) under `@prateek-os/runtime-coordination` distributed lease protection (`patrick:discord-gateway`). Scheduled background workers (`jobops-scheduler`, `news-radar-scheduled`, and `capture-api`) run as finite, isolated processes. Database identity, not the Railway environment label, defines the data environment; current accepted runtime targets hosted DEV.
 
-### macOS LaunchAgents
+### Local Runtimes and LaunchAgents
 
-Patrick and the optional Application Materials worker need persistent access to local/private capabilities. LaunchAgents provide per-user startup, restart, and independent supervision without keeping terminal windows open. The tradeoff is dependence on the Mac being logged in and awake; sleep pauses work, after which leases and replay rules must make recovery safe.
+Historically, Patrick and the Application Materials worker ran under macOS LaunchAgents for local supervision. Under N1.7E, Patrick Gateway cut over to Railway hosting. LaunchAgent templates and scripts remain in `ops/macos/` for local development and for the Application Materials worker, which is currently dormant with retirement scheduled in J5.
 
 ### GitHub Actions and the quality toolchain
 
@@ -208,7 +208,7 @@ Environment variables supply configuration and secret references at runtime. The
 
 A macOS LaunchAgent is a per-user service definition. `KeepAlive` can restart a process after failure; a wrapper script can establish the correct working directory, executable paths, and private environment before launching Node.
 
-Prateek OS uses independent LaunchAgents for Patrick and, when installed, the Application Materials worker. Independent supervision prevents one workload's crash or long generation step from taking down Discord control. The management scripts and plist templates live under `ops/macos/application-materials/`.
+Prateek OS uses independent LaunchAgents for Patrick and, when active, the Application Materials worker. Independent supervision prevents one workload's crash or long generation step from taking down Discord control. The management scripts and plist templates live under `ops/macos/application-materials/`.
 
 Secrets belong in ignored files with restrictive permissions—commonly directory mode `0700` and file mode `0600`—or in an approved secret store. Wrappers should report only presence/readiness, never values.
 
@@ -439,22 +439,31 @@ flowchart TB
       Capture
       PersonalOps[Personal Ops]
       JobOps
-      Materials[Application Materials]
-      Radar[Tech News Radar\nIN PROGRESS]
+      Materials[Application Materials\nDORMANT]
+      Radar[Tech News Radar]
     end
-    DB[(Supabase PostgreSQL\nstructured/live state)]
+    subgraph DataPlane[Multi-Plane Data Architecture]
+      CoreDB[(Core Supabase)]
+      JobOpsDB[(JobOps Neon)]
+      RadarDB[(News Radar Supabase)]
+      Backup["@prateek-os/backup-foundation<br/>OS4 IN PROGRESS"]
+    end
     Google[Google Calendar / Tasks]
     Models[Model providers\nbounded seams]
     Discord --> Patrick
     iOS --> CaptureAPI
     Feeds --> JobOps
     Feeds --> Radar
-    Patrick --> Capture & PersonalOps & Materials & Radar
+    Patrick --> Capture & PersonalOps & Radar
+    Patrick -. status/review .-> Materials
     CaptureAPI --> Capture
     CLIs --> JobOps & Radar
     Capture --> PersonalOps
-    JobOps --> Materials
-    Capture & PersonalOps & JobOps & Materials & Radar --> DB
+    JobOps -. request queue .-> Materials
+    Capture & PersonalOps --> CoreDB
+    JobOps --> JobOpsDB
+    Radar --> RadarDB
+    CoreDB & JobOpsDB & RadarDB -. backup / restore foundation .-> Backup
     PersonalOps --> Google
     Capture & Materials & Radar -. where justified .-> Models
 ```
@@ -463,22 +472,28 @@ flowchart TB
 
 ```mermaid
 flowchart LR
-    subgraph Mac[Local Mac / independently supervised]
-      Patrick
-      AMW[Application worker\ncurrently paused]
+    subgraph Railway[Railway Hosted Execution]
+      Gateway[Patrick Gateway\npersistent discord-bot]
+      JobOpsCron[JobOps scheduler\nfinite cron]
+      RadarCron[News Radar scheduled\nfinite worker]
+      CapAPI[Capture API\nHTTP ingress]
     end
-    subgraph Railway[Railway]
-      Cron[JobOps finite cron dispatcher]
+    subgraph Data[Hosted Databases DEV]
+      CoreDB[(Core Supabase)]
+      NeonDB[(JobOps Neon)]
+      NewsDB[(News Radar Supabase)]
     end
-    subgraph Supabase[Hosted Supabase DEV]
-      DB[(PostgreSQL + private storage)]
+    subgraph Mac[Local Mac Supervision]
+      AMW[Application worker\nDORMANT]
     end
-    Patrick <--> DB
-    AMW <--> DB
-    Cron <--> DB
-    Patrick <--> Discord
-    Cron --> Sources[Public job sources / read-only Gmail]
-    Patrick --> Google[Google Calendar / Tasks]
+    Gateway <--> CoreDB & NewsDB
+    Gateway <--> Discord[Discord Gateway / REST]
+    JobOpsCron <--> NeonDB
+    RadarCron <--> NewsDB
+    CapAPI <--> CoreDB
+    Gateway --> Google[Google Calendar / Tasks]
+    JobOpsCron --> Sources[Public job feeds / read-only Gmail]
+    RadarCron --> NewsSources[RSS / HN / public news feeds]
 ```
 
 ## 17. Glossary

@@ -1,9 +1,9 @@
 # Prateek Web — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-web`<br>
-> **Source baseline:** `71c77c0673420925d705b48b193713e7c3c6a374`<br>
-> **Source scope:** `src/`; `public/`; `scripts/`; `e2e/`; `package.json`; `astro.config.mjs`; `playwright.config.ts`; `vitest.config.ts`; `wrangler.jsonc`; `PROJECT_HANDOFF.md`; and `docs/w1/`<br>
+> **Source baseline:** canonical `main` `007ad31bbfc481ca7621da64cdb7593060aab5c2`<br>
+> **Source scope:** `src/`; `public/`; `scripts/`; `e2e/`; `package.json`; `astro.config.mjs`; `playwright.config.ts`; `vitest.config.ts`; `wrangler.jsonc`; `PROJECT_HANDOFF.md`; and `docs/`<br>
 > **Documentation status:** Current
 
 [Documentation home](README.md) · [User guide](user-guide.md) · [Status](STATUS.md)
@@ -145,4 +145,4 @@ Production uses the Astro Cloudflare adapter and Cloudflare Workers with static 
 - Illustrative project visuals preserve layout and storytelling while real assets are unavailable, but each must be reviewed when final evidence arrives.
 - Manual deployment keeps infrastructure simple but makes disciplined release records and smoke tests essential.
 
-Future work includes real approved media, optional secure server-side Creator analytics, Personal writing/art, further token enforcement, and final visual acceptance. No implemented W2 architecture was found, so this guide does not invent one.
+W1 is closed; W2 is in progress: W2.5 is complete and deployed, with final W2 visual acceptance pending owner signoff on branch `fix/final-w2-production-acceptance` (`eb1b423f3e4d69162f9547dc65f6e724d12c3899`). Future work continues for real approved media, Creator analytics, Personal writing/art, and further token enforcement.
