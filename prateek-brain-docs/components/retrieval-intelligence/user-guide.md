@@ -1,8 +1,8 @@
 # Retrieval Intelligence — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-brain`<br>
-> **Source baseline:** canonical `main` `78324967005cccd0b36147e82647f8ef464e8918`<br>
+> **Source baseline:** canonical `main` `507be98f51ebece7d7c36d593786df39f0523e73`<br>
 > **Source scope:** `src/cli/brainctl.ts`; `src/{search,claims,context,l4,l5}/`; `migrations/0009_b2_2_search_baseline.sql`; and `tests/`<br>
 > **Documentation status:** Current
 

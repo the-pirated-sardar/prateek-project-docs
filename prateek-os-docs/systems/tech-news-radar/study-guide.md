@@ -1,14 +1,14 @@
 # Tech News Radar — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`); canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
-> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; and `docs/reviews/news-radar/N1/`<br>
-> **Documentation status:** In progress
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; `docs/adr/0019-n1-centralized-patrick-runtime-and-replay-readiness.md`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Current
 
 [Documentation home](../../README.md) · [OS model/scoring architecture](../../os-study-guide.md#10-model-and-prompt-architecture) · [User guide](user-guide.md)
 
-> **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING.** This guide reflects committed feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae`, inspected on 2026-09-05. Hosted DEV was activated from `41007e5`; review found defects, and corrections through `2bd34e3` passed independent delta review and hosted reactivation/reverification. N1 is not owner-accepted, merged, deployed to PROD, or formally closed.
+> **IMPLEMENTED · HOSTED DEV.** Formally closed and merged into canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Centralized Patrick runtime on Railway (`patrick-gateway`), Replay Lab, and durable rolling judgment budget are live on hosted DEV. Structured data is housed in a dedicated News Radar Supabase project under the OS4 multi-plane architecture.
 
 ## What problem it solves
 
@@ -37,7 +37,7 @@ flowchart LR
     EP --> Desk[#tech-desk pointer outline]
 ```
 
-Every box after fetching is present, and the recurring path has run on hosted DEV. Activation review found issues in delivered presentation/readiness behavior; the corrections passed delta review and hosted reverification, and batched owner acceptance remains.
+Every box after fetching is present, and the recurring path is live on hosted DEV. The centralized Patrick Gateway (`patrick-gateway`) and background workers run on Railway, while Replay Lab supports deterministic replay and testing without mutating live tables or leases.
 
 ## Major components
 
@@ -311,15 +311,13 @@ Hosted-DEV migration/configuration, recurring runtime observation, Discord regis
 
 ## Current limitations
 
-- Hosted DEV was activated and corrected; owner acceptance is currently pending.
-- The feature branch is not merged and PROD is untouched.
+- Implemented and accepted on hosted DEV; routine operation targets DEV rather than hosted PROD.
 - Direct X/Reddit integration is explicitly excluded; indirect coverage is incomplete.
 - Current RSS parser is bounded, not a full XML implementation.
 - Source catalog has known topical asymmetries.
 - Preference accumulation has an accepted low-practical-risk non-atomic update debt before concurrent writers exist.
 - Model bake-off was small/single-run and used clean evidence.
 - No contemporaneous long-running editorial quality/recall measurement exists; activation evidence is an initial operational window.
-- No owner-accepted real pipeline outline has been recorded.
 
 ## Source map
 

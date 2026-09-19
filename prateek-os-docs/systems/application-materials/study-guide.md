@@ -1,8 +1,8 @@
 # Application Materials — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/application-materials/`; Application Materials paths in `apps/discord-bot/` and `ops/macos/`; `supabase/migrations/`; `docs/adr/{0007,0009,0010}-*.md`; and `docs/reviews/application-materials/`<br>
 > **Documentation status:** Current
 
@@ -18,7 +18,7 @@ The naïve approach asks a model for LaTeX/PDF and retries until it looks right.
 
 Prepare a tailored one-page resume and one-page cover letter quickly, without inventing experience and without ever submitting an application automatically. The terminal product state is human review, not “applied.”
 
-**Operational status:** the A1/A2 architecture and acceptance evidence remain valid, but the worker is intentionally not installed/running and end-to-end generation is currently unreliable. Requests can queue; processing is paused pending a repair milestone.
+**Operational status:** dormant with retirement scheduled in J5. The A1/A2 architecture and acceptance evidence remain documented, but the worker is intentionally not installed/running. Dedicated rehosting is deferred; full retirement is planned in J5. Requests can queue; processing is paused.
 
 ## Where it sits in Prateek OS
 
@@ -209,12 +209,12 @@ Later operational experience showed the generation backend is not reliable enoug
 - Models are good at prose; deterministic tools are better at identity, evidence, layout, and page geometry.
 - Recovery must preserve semantic lineage, not merely rerun a command.
 - A real acceptance can prove a path once without guaranteeing its long-term operational reliability.
-- The current repair should replace or harden the execution backend while retaining evidence, journaling, validation, privacy, and human approval.
+- The safety architecture (evidence, journaling, validation, privacy, and human approval) remains valid, but dedicated rehosting is deferred and retirement of the subsystem is scheduled under J5.
 
 ## Current limitations
 
 - Worker not installed/running; queued requests do not process today.
-- Current Codex CLI generation path is unreliable end to end.
+- Subsystem is dormant; dedicated rehosting deferred; retirement scheduled under J5.
 - Provider/model/token/cost telemetry may be unavailable and is not guessed.
 - Generated content still needs careful human review even after deterministic validation.
 - No automatic application submission, outreach, or public artifact hosting.

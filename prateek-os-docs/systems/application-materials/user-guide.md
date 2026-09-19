@@ -1,8 +1,8 @@
 # Application Materials — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/application-materials/`; Application Materials paths in `apps/discord-bot/` and `ops/macos/`; and `docs/reviews/application-materials/A2/`<br>
 > **Documentation status:** Current
 
@@ -12,7 +12,7 @@
 
 Application Materials prepares a tailored one-page resume PDF and one-page cover-letter PDF for a canonical JobOps posting, using verified evidence and deterministic document checks.
 
-**Current status: IMPLEMENTED, BUT RUNTIME PAUSED / NOT RELIABLE END TO END.** Requests can be queued; the worker is not currently installed/running, so no package will be generated until the repair milestone is completed and the worker is restored.
+**Current status: DORMANT · RETIREMENT SCHEDULED IN J5.** Requests can be queued; the worker is intentionally not installed or running. Dedicated rehosting is deferred; retirement of the subsystem is scheduled under J5.
 
 ## Where I use it
 
@@ -88,10 +88,10 @@ The model may draft language, but it cannot authorize facts or own document layo
 ## Current limitations
 
 - Worker intentionally absent; generation paused.
-- Execution backend needs repair/replacement; no replacement provider is selected.
+- Subsystem is dormant; dedicated rehosting is deferred; retirement is scheduled under J5.
 - Automated validation cannot replace human review.
 - No submission, recruiter message, or public document link is created.
 
 ## Planned improvements
 
-A future maintenance milestone is expected to repair the generation path and reconcile updated master resume/cover-letter sources while preserving the existing evidence, budget, recovery, privacy, and approval contracts.
+Dedicated rehosting is deferred; full retirement of Application Materials is planned in J5.

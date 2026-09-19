@@ -1,14 +1,14 @@
 # Tech News Radar — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`); canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
-> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; and `docs/reviews/news-radar/N1/`<br>
-> **Documentation status:** In progress
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; `docs/adr/0019-n1-centralized-patrick-runtime-and-replay-readiness.md`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Current
 
 [Documentation home](../../README.md) · [Technical study guide](study-guide.md)
 
-> **IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING.** Hosted DEV was activated from `41007e5`, but its review found defects. Corrections through `2bd34e3` passed independent delta review and hosted reactivation/reverification. Do not treat these workflows as owner-accepted, merged, PROD, or formally closed.
+> **IMPLEMENTED · HOSTED DEV.** Formally closed and merged into canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Centralized Patrick runtime on Railway (`patrick-gateway`), Replay Lab, and durable rolling judgment budget are live on hosted DEV. Structured data is housed in a dedicated News Radar Supabase project under the OS4 multi-plane architecture.
 
 ## What it does
 
@@ -16,13 +16,13 @@ Tech News Radar turns bounded public tech-news sources into a deduplicated, clus
 
 ## Where I will use it
 
-| Channel          | Use                                                                        | Current status                           |
-| ---------------- | -------------------------------------------------------------------------- | ---------------------------------------- |
-| `#tech-firehose` | What N1 is seeing after validation/dedupe, before personalized suppression | **Hosted DEV; owner acceptance pending** |
-| `#tech-radar`    | Primary concise curated story stream                                       | **Hosted DEV; owner acceptance pending** |
-| `#tech-breaking` | Rare major interrupt/promotions                                            | **Hosted DEV; owner acceptance pending** |
-| `#tech-digest`   | Daily compact editorial checkpoint                                         | **Hosted DEV; owner acceptance pending** |
-| `#tech-desk`     | Pipeline status and released pointer outlines                              | **Registered; owner acceptance pending** |
+| Channel          | Use                                                                        | Current status          |
+| ---------------- | -------------------------------------------------------------------------- | ----------------------- |
+| `#tech-firehose` | What N1 is seeing after validation/dedupe, before personalized suppression | **Hosted DEV · Active** |
+| `#tech-radar`    | Primary concise curated story stream                                       | **Hosted DEV · Active** |
+| `#tech-breaking` | Rare major interrupt/promotions                                            | **Hosted DEV · Active** |
+| `#tech-digest`   | Daily compact editorial checkpoint                                         | **Hosted DEV · Active** |
+| `#tech-desk`     | Pipeline status and released pointer outlines                              | **Hosted DEV · Active** |
 
 ## Common workflows (hosted DEV)
 
@@ -37,15 +37,15 @@ Pasting a URL in `#tech-radar` or `#tech-breaking` is intended to store it, trea
 
 ### Flag important/covering
 
-The intended `/news-flag` control marks canonical story/topic state such as explicitly important or already being covered. It is separate from ✅/❌ preference semantics.
+The `/news-flag` control marks canonical story/topic state such as explicitly important or already being covered. It is separate from ✅/❌ preference semantics.
 
 ### Manage sources
 
-The `/news-source` command lists/enables/disables bounded catalog sources for the authorized owner. The handler is registered on hosted DEV; owner interaction acceptance remains open.
+The `/news-source` command lists/enables/disables bounded catalog sources for the authorized owner. The handler is registered and active on hosted DEV.
 
 ## Commands / reactions / controls
 
-The controls are ✅/❌ preference reactions, 🎬/🧵 editorial-selection reactions, `/news-source`, `/news-flag`, and `/news-pipeline`. They were registered on hosted DEV but remain **IN PROGRESS / OWNER ACCEPTANCE PENDING**.
+The controls are ✅/❌ preference reactions, 🎬/🧵 editorial-selection reactions, `/news-source`, `/news-flag`, and `/news-pipeline`. They are active on hosted DEV.
 
 ## Editorial Story Pipeline
 

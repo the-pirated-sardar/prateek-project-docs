@@ -1,8 +1,8 @@
 # Documentation Maintenance
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-project-docs`<br>
-> **Source baseline:** `97bd9525404c9c697358b67636b671a6b53273c4`<br>
+> **Source baseline:** cross-repository reconciliation tracking `prateek-os@d67e5cf543e62636a6dfa0ee96d35835028e1e9d`, `prateek-brain@507be98f51ebece7d7c36d593786df39f0523e73`, and `prateek-web@007ad31bbfc481ca7621da64cdb7593060aab5c2`<br>
 > **Source scope:** all public Markdown, project indexes, metadata convention, links, and publication-safety checks<br>
 > **Documentation status:** Current
 

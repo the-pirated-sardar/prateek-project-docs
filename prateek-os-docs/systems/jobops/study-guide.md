@@ -1,8 +1,8 @@
 # JobOps — Study Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
 > **Source scope:** `services/jobops/`; JobOps paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/000{1,2,3,4,5}-*.md`; and `docs/reviews/jobops/`<br>
 > **Documentation status:** Current
 
@@ -31,7 +31,7 @@ flowchart LR
     R --> D[Discord delivery]
     D --> N[#jobs-new / #jobs-hot]
     D --> AM[Application Materials identity]
-    I & O & J & E & R & D --> DB[(PostgreSQL)]
+    I & O & J & E & R & D --> DB[(JobOps Neon PostgreSQL)]
 ```
 
 ## Major components
@@ -224,8 +224,8 @@ Private account content, source details, identifiers, and acceptance fixtures ar
 - Unknown location is suppressed, which creates deliberate false negatives.
 - Ranking is heuristic; no hidden hiring or immigration truth is claimed.
 - The future post-employment ranking mode is not built.
-- Remaining JobOps CRM/outreach/follow-up/interview-prep milestone is planned late.
-- Application Materials generation is a separate paused runtime; a JobOps notification does not guarantee documents will be produced today.
+- J5 is scheduled after R1; J3 (CRM, outreach preparation, follow-ups) is deferred without a planned date.
+- Application Materials is dormant with retirement scheduled in J5; a JobOps notification does not generate documents today.
 
 ## Source map
 

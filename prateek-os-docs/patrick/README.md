@@ -1,9 +1,9 @@
 # Patrick — Interaction Layer
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`; N1 status from in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`)<br>
-> **Source scope:** `apps/discord-bot/`; `docs/{ARCHITECTURE,USER_GUIDE,ROADMAP}.md`; `docs/adr/0006-patrick-interaction-identity.md`; `docs/future/`; and `docs/reviews/news-radar/N1/`<br>
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `apps/discord-bot/`; `docs/{ARCHITECTURE,USER_GUIDE,ROADMAP}.md`; `docs/adr/0006-patrick-interaction-identity.md`; `docs/adr/0019-n1-centralized-patrick-runtime-and-replay-readiness.md`; and `docs/reviews/news-radar/N1/`<br>
 > **Documentation status:** Mixed current/future
 
 [Documentation home](../README.md) · [OS study guide](../os-study-guide.md) · [Systems index](../systems/README.md)
@@ -39,7 +39,7 @@ Accepted Discord interaction includes:
 - JobOps notifications and the reaction that requests Application Materials;
 - Application Materials command/status delivery surfaces, while generation is currently paused.
 
-Tech News Radar/N1 was activated through Patrick on hosted DEV from an unmerged feature snapshot. Activation review found defects; corrections through `2bd34e3` passed delta review and hosted reactivation/reverification. Batched owner acceptance remains pending, and N1 is not canonical-main, PROD, or formally closed behavior.
+Tech News Radar/N1 is complete, formally closed, and merged to canonical `main`. Patrick Gateway runs persistently on Railway (`patrick-gateway`) under distributed lease coordination (`patrick:discord-gateway`), managing Discord interaction and delivering editorial channels (`#tech-firehose`, `#tech-radar`, `#tech-breaking`, `#tech-digest`, `#tech-desk`).
 
 Patrick is the interface, not the authority. A conversational request does not create permission. The authenticated actor and role determine access, and each target system preserves its own authorization and approval rules. Patrick is also not canonical storage, a database, Recall, the Brain, a particular language model, or the whole operating system.
 

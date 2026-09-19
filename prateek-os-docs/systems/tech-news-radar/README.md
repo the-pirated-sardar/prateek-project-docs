@@ -1,35 +1,37 @@
 # Tech News Radar
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-os`<br>
-> **Source baseline:** in-progress feature snapshot `c111af6770bc2197ce35b2cb76179356911b39ae` (corrected code `2bd34e3`); canonical `main` `76edfe8635c5abf075c12e47eaa39b70f1b1bce5`<br>
-> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; and `docs/reviews/news-radar/N1/`<br>
-> **Documentation status:** In progress
+> **Source baseline:** accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d` (derived from canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`)<br>
+> **Source scope:** `services/news-radar/`; N1 paths in `apps/discord-bot/`; `supabase/migrations/`; `docs/adr/0013-n1-tech-news-radar.md`; `docs/adr/0019-n1-centralized-patrick-runtime-and-replay-readiness.md`; and `docs/reviews/news-radar/N1/`<br>
+> **Documentation status:** Current
 
-Tech News Radar is the N1 editorial tech-news system. Its intended job is to turn bounded public-source observations into a deduplicated, clustered, personalized editorial stream, while preserving evidence and keeping editorial selection distinct from automatic publication.
+Tech News Radar is the N1 editorial tech-news system. It turns bounded public-source observations into a deduplicated, clustered, personalized editorial stream, preserving evidence and keeping editorial selection distinct from automatic publication.
 
 ## Status
 
-**IN PROGRESS — HOSTED DEV / CORRECTION VERIFIED / OWNER ACCEPTANCE PENDING.** Hosted DEV was activated from `41007e5`, and recurring surfaces/controls were exercised. Independent review then found user-visible defects; corrections through `2bd34e3` passed delta review and hosted reactivation/reverification, recorded through `c111af6`. N1 is not merged into canonical `main`, deployed to PROD, owner-accepted, or formally closed.
+**IMPLEMENTED · HOSTED DEV.** Formally closed and merged into canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Centralized Patrick runtime on Railway (`patrick-gateway`), Replay Lab, and durable rolling judgment budget are live on hosted DEV. Structured data is housed in a dedicated News Radar Supabase project under the OS4 multi-plane architecture.
 
 ## What to read
 
-| Document                                  | Best for                                                                                                                                  |
-| ----------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
-| [Study Guide](study-guide.md)             | In-progress architecture, canonicalization, clustering, editorial ranking, feedback, delivery, pipeline design, testing, and limitations. |
-| [User Guide](user-guide.md)               | Intended channels, reactions, controls, Editorial Story Pipeline workflows, and current non-live constraints.                             |
-| [OS Study Guide](../../os-study-guide.md) | Shared canonical-state, model-boundary, scheduling, and delivery principles.                                                              |
+| Document                                  | Best for                                                                                                                         |
+| ----------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [Study Guide](study-guide.md)             | Architecture, canonicalization, clustering, editorial ranking, feedback, delivery, Replay Lab, pipeline design, and limitations. |
+| [User Guide](user-guide.md)               | Channel surfaces, reactions, controls, and Editorial Story Pipeline workflows on hosted DEV.                                     |
+| [OS Study Guide](../../os-study-guide.md) | Shared canonical-state, model-boundary, multi-plane persistence, scheduling, and delivery principles.                            |
 
 ## In this system
 
 - a broad Firehose after validation and deduplication;
 - a concise editorial Radar, rare Breaking surface, and daily Digest;
 - developing-story clustering and deterministic features before optional grounded editorial judgement;
+- durable rolling judgment budget and attempt leasing for chargeable model calls;
 - replay-safe feedback that records bounded preference evidence;
+- Replay Lab for offline replay without live table or lease mutations;
 - missed-story submission and coverage-gap diagnosis;
 - an Editorial Story Pipeline for primary/secondary selection, stashing, trimming, resetting, and evidence-grounded pointer-outline release.
 
-The hosted-DEV acceptance environment exists and the correction cycle is verified; batched owner acceptance remains before milestone closeout. Release is designed to produce an editorial outline rather than a spoken script or automatic publication.
+Release is designed to produce an editorial outline rather than a spoken script or automatic publication.
 
 ## Related systems
 

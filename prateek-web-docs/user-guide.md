@@ -1,9 +1,9 @@
 # Prateek Web — User Guide
 
-> **Last updated:** 2026-09-05<br>
+> **Last updated:** 2026-09-19<br>
 > **Source repository:** `prateek-web`<br>
-> **Source baseline:** `71c77c0673420925d705b48b193713e7c3c6a374`<br>
-> **Source scope:** `src/pages/`; `src/data/`; `src/layouts/`; `src/components/`; `src/lib/auth/`; `src/middleware.ts`; `package.json`; `PROJECT_HANDOFF.md`; and `docs/w1/FUTURE_WORK.md`<br>
+> **Source baseline:** canonical `main` `007ad31bbfc481ca7621da64cdb7593060aab5c2`<br>
+> **Source scope:** `src/pages/`; `src/data/`; `src/layouts/`; `src/components/`; `src/lib/auth/`; `src/middleware.ts`; `package.json`; `PROJECT_HANDOFF.md`; and `docs/`<br>
 > **Documentation status:** Current
 
 [Documentation home](README.md) · [Technical study guide](study-guide.md) · [Status](STATUS.md)
@@ -69,4 +69,4 @@ Deployment targets Cloudflare Workers and is manual. The high-level flow is: pas
 
 ### Current limitations and planned evolution
 
-Real Creator analytics/media, some project imagery, Personal art/writing, and a final branded social asset remain future inputs. The design-system page has known low-priority enforcement and focus-detour debt. Visual/product polish continues after the first live W1 baseline. These limitations are content and refinement boundaries, not evidence of a separate W2 implementation.
+Real Creator analytics/media, some project imagery, Personal art/writing, and a final branded social asset remain future inputs. The design-system page has known low-priority enforcement and focus-detour debt. W1 is closed; W2 is in progress: W2.5 is deployed, and final visual acceptance is pending owner review on branch `fix/final-w2-production-acceptance` (`eb1b423f3e4d69162f9547dc65f6e724d12c3899`).
