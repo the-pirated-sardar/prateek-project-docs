@@ -10,7 +10,7 @@ Platform / Core is the shared foundation beneath Prateek OS. It provides reusabl
 
 ## Status
 
-**IMPLEMENTED · HOSTED DEV.** Standardized through completed OS3 audit (2026-09-14). OS4 Supabase Offload & Backup Foundation is currently active/in progress: Three-Plane Hosted Activation landed on `main` at `e82862b` (Phase B1 remote transport / backup-foundation CLI and initial hosted offload); Core source-table retirement and milestone closeout open.
+**IMPLEMENTED · HOSTED DEV.** Standardized through completed OS3 audit (2026-09-14). OS4 Supabase Offload & Backup Foundation is currently active/in progress: Three-Plane Hosted Activation landed on `main` at `e82862b` (Three-Plane hosted data cutover and backup-foundation CLI); Core source-table retirement, production backup deployment, and milestone closeout open.
 
 ## What to read
 
@@ -22,7 +22,7 @@ Platform / Core is the shared foundation beneath Prateek OS. It provides reusabl
 
 ## In this system
 
-- multi-plane persistence across Core Supabase, dedicated News Radar Supabase, and JobOps Neon, with `@prateek-os/backup-foundation` providing backup/restore validation under OS4;
+- multi-plane persistence across Core Supabase, dedicated News Radar Supabase, and JobOps Neon, with `@prateek-os/backup-foundation` providing the accepted backup/restore foundation under active OS4 development;
 - centralized Patrick Gateway on Railway (`patrick-gateway`) under `@prateek-os/runtime-coordination` distributed lease protection;
 - small shared packages for database access, permissions, provenance, events, approvals, and other proven primitives;
 - deterministic identity, idempotency, leases, fencing, and bounded failure handling;

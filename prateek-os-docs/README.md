@@ -8,9 +8,9 @@
 
 Prateek OS is a private personal operating system made of focused services rather than one all-powerful agent. It currently supports low-friction capture, personal planning, job discovery and ranking, and tech news radar.
 
-The design is deterministic-first: databases, explicit rules, stable identities, and state machines remain authoritative. Raw inputs retain provenance; derived classifications and scores are rebuildable. High-consequence mutations such as Calendar writes have explicit approval gates and fail closed at those boundaries. Patrick, the Discord identity, is the interaction surface—not an authorization principal or source of truth. Structured live state is split across Core Supabase (Capture, Personal Ops, Patrick Core state), dedicated News Radar Supabase, and JobOps Neon; `@prateek-os/backup-foundation` provides an accepted backup/restore foundation under OS4.
+The design is deterministic-first: databases, explicit rules, stable identities, and state machines remain authoritative. Raw inputs retain provenance; derived classifications and scores are rebuildable. High-consequence mutations such as Calendar writes have explicit approval gates and fail closed at those boundaries. Patrick, the Discord identity, is the interaction surface—not an authorization principal or source of truth. Structured live state is split across Core Supabase (Capture, Personal Ops, Patrick Core state), dedicated News Radar Supabase, and JobOps Neon; `@prateek-os/backup-foundation` provides the accepted backup/restore foundation under active OS4 development (production scheduling, retention, NAS destination, restore drills, and any optional cold offload remain unfinished).
 
-> **Public documentation baseline — 2026-09-19.** Reconciled against accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d`. Tech News Radar (N1) is **COMPLETE and merged to canonical `main`** (2026-09-13). OS3 System Audit & Standardization is **CLOSED** (2026-09-14); OS4 Supabase Offload & Backup Foundation is **IN PROGRESS** (Three-Plane hosted activation landed on `main` at `e82862b`; backup foundation CLI exists; source-table retirement and closeout open). See the concise [documentation status](STATUS.md).
+> **Public documentation baseline — 2026-09-19.** Reconciled against accepted cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d`. Tech News Radar (N1) is **COMPLETE and merged to canonical `main`** (2026-09-13). OS3 System Audit & Standardization is **CLOSED** (2026-09-14); OS4 Supabase Offload & Backup Foundation is **IN PROGRESS** (Three-Plane hosted data cutover landed on `main` at `e82862b`; backup foundation CLI exists; source-table retirement, production backup deployment, and closeout open). See the concise [documentation status](STATUS.md).
 
 ## What this documentation contains
 
@@ -47,18 +47,18 @@ flowchart LR
     C & PO --> DB1[(Core Supabase)]
     JO --> DB2[(JobOps Neon)]
     N1 --> DB3[(News Radar Supabase)]
-    DB1 & DB2 & DB3 -. offload .-> BF[@prateek-os/backup-foundation\nOS4 IN PROGRESS]
+    DB1 & DB2 & DB3 -. backup / restore foundation .-> BF[@prateek-os/backup-foundation\nOS4 IN PROGRESS]
 ```
 
 Patrick is shown above as the interaction layer connecting people to capabilities, not as another domain system. See the [Patrick documentation](patrick/README.md).
 
-Implemented systems run against hosted **DEV**, not Supabase PROD. Patrick Gateway runs persistently on Railway (`patrick-gateway`) under `@prateek-os/runtime-coordination` distributed leases (`patrick:discord-gateway`). JobOps scheduling, News Radar scheduling, and Capture API run as independent Railway processes. The Application Materials worker is dormant (generation paused, dedicated rehosting deferred, and retirement scheduled in J5).
+Implemented systems run against hosted **DEV**, not Supabase PROD. Patrick Gateway runs persistently on Railway (`patrick-gateway`) under `@prateek-os/runtime-coordination` distributed leases (`patrick:discord-gateway`). JobOps scheduling, News Radar scheduling, and Capture API run as independent Railway processes. The Application Materials worker is dormant (generation paused, dedicated rehosting deferred, and owner-facing retirement scheduled in J5).
 
 ## Roadmap / what's next
 
 - **N1 — Tech News Radar:** complete, closed, and merged to canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Centralized Patrick runtime, Replay Lab, and rolling judgment budget are live on hosted DEV.
 - **OS3 — System Audit & Standardization:** complete, closed on 2026-09-14 (`os3-final-closeout.md`).
-- **OS4 — Supabase Offload, Backup Foundation & Quota Remediation:** active / in progress. Three-Plane Hosted Activation landed on `main` at `e82862b` (Phase B1 remote transport / backup-foundation CLI and initial hosted offload); Core source-table retirement and milestone closeout open.
+- **OS4 — Supabase Offload, Backup Foundation & Quota Remediation:** active / in progress. Three-Plane Hosted Activation landed on `main` at `e82862b` (Three-Plane hosted data cutover and backup-foundation CLI); Core source-table retirement, production backup deployment, and milestone closeout open.
 - **R1 — Reference Library:** next OS milestone; saved-media-reference system; scope still unfrozen; distinct from RC1 Recall.
 - **J5 — JobOps Health, Feedback & Application-Materials Retirement:** scheduled immediately after R1.
 - **J3 — JobOps CRM / outreach / follow-ups / interview preparation:** deferred without planned date (TBD).

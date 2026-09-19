@@ -57,7 +57,7 @@ For a typical Discord action:
 
 - **Node.js/TypeScript:** one typed runtime across bot, CLIs, workers, HTTP, and tests. No formal language bake-off is recorded.
 - **pnpm workspaces:** one lockfile and shared gates, with package promotion only when a consumer exists.
-- **Multi-plane PostgreSQL / storage:** structured state lives across dedicated, bounded databases—Core Supabase (Capture, Personal Ops, Patrick Core), dedicated Radar Supabase, and JobOps Neon PostgreSQL—with `@prateek-os/backup-foundation` managing local offloading.
+- **Multi-plane PostgreSQL / storage:** structured state lives across dedicated, bounded databases—Core Supabase (Capture, Personal Ops, Patrick Core), dedicated Radar Supabase, and JobOps Neon PostgreSQL; `@prateek-os/backup-foundation` provides the accepted backup/restore foundation under active OS4 development (production scheduling, retention, NAS destination, restore drills, and any optional cold offload remain unfinished).
 - **Discord:** immediate cross-device control surface instead of a custom dashboard.
 - **Vitest/ESLint/Prettier/TypeScript/GitHub Actions:** fast local feedback and exact-revision proof.
 - **Railway and launchd:** Railway hosts the Patrick Gateway service under distributed lease coordination (`patrick:discord-gateway`) and finite hosted scheduling for JobOps cron runs; LaunchAgents provide optional local supervisor execution.

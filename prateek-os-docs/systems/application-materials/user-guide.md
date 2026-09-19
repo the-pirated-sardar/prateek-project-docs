@@ -12,7 +12,7 @@
 
 Application Materials prepares a tailored one-page resume PDF and one-page cover-letter PDF for a canonical JobOps posting, using verified evidence and deterministic document checks.
 
-**Current status: DORMANT · RETIREMENT SCHEDULED IN J5.** Requests can be queued; the worker is intentionally not installed or running. Dedicated rehosting is deferred; retirement of the subsystem is scheduled under J5.
+**Current status: DORMANT · RETIREMENT SCHEDULED IN J5.** Requests can be queued; the worker is dormant and not operating as an active owner workflow. Dedicated rehosting is deferred; owner-facing retirement/deactivation is scheduled in J5.
 
 ## Where I use it
 
@@ -87,11 +87,11 @@ The model may draft language, but it cannot authorize facts or own document layo
 
 ## Current limitations
 
-- Worker intentionally absent; generation paused.
-- Subsystem is dormant; dedicated rehosting is deferred; retirement is scheduled under J5.
+- Worker is dormant / not running as an active owner workflow; generation paused.
+- Dedicated rehosting is deferred; owner-facing retirement/deactivation is scheduled in J5.
 - Automated validation cannot replace human review.
 - No submission, recruiter message, or public document link is created.
 
 ## Planned improvements
 
-Dedicated rehosting is deferred; full retirement of Application Materials is planned in J5.
+Dedicated rehosting is deferred; owner-facing retirement/deactivation is scheduled in J5.

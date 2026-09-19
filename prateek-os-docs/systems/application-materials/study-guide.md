@@ -18,7 +18,7 @@ The naïve approach asks a model for LaTeX/PDF and retries until it looks right.
 
 Prepare a tailored one-page resume and one-page cover letter quickly, without inventing experience and without ever submitting an application automatically. The terminal product state is human review, not “applied.”
 
-**Operational status:** dormant with retirement scheduled in J5. The A1/A2 architecture and acceptance evidence remain documented, but the worker is intentionally not installed/running. Dedicated rehosting is deferred; full retirement is planned in J5. Requests can queue; processing is paused.
+**Operational status:** worker dormant; dedicated rehosting deferred; owner-facing retirement/deactivation scheduled in J5. The A1/A2 architecture and acceptance evidence remain documented, but the worker is not operating as an active owner workflow. Requests can queue; processing is paused.
 
 ## Where it sits in Prateek OS
 
@@ -209,12 +209,12 @@ Later operational experience showed the generation backend is not reliable enoug
 - Models are good at prose; deterministic tools are better at identity, evidence, layout, and page geometry.
 - Recovery must preserve semantic lineage, not merely rerun a command.
 - A real acceptance can prove a path once without guaranteeing its long-term operational reliability.
-- The safety architecture (evidence, journaling, validation, privacy, and human approval) remains valid, but dedicated rehosting is deferred and retirement of the subsystem is scheduled under J5.
+- The safety architecture (evidence, journaling, validation, privacy, and human approval) remains valid, but dedicated rehosting is deferred and owner-facing retirement/deactivation is scheduled in J5.
 
 ## Current limitations
 
-- Worker not installed/running; queued requests do not process today.
-- Subsystem is dormant; dedicated rehosting deferred; retirement scheduled under J5.
+- Worker is dormant / not operating as an active owner workflow; queued requests do not process today.
+- Dedicated rehosting is deferred; owner-facing retirement/deactivation scheduled in J5.
 - Provider/model/token/cost telemetry may be unavailable and is not guessed.
 - Generated content still needs careful human review even after deterministic validation.
 - No automatic application submission, outreach, or public artifact hosting.

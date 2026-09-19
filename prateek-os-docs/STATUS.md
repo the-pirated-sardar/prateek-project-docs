@@ -10,7 +10,7 @@
 - **Canonical `prateek-os` baseline:** canonical `main` `e82862bbbaee4cc7a847897b49ad05c23ceab387`; accepted internal cleanup HEAD `d67e5cf543e62636a6dfa0ee96d35835028e1e9d`
 - **N1 Tech News Radar:** complete, formally closed, and merged into canonical `main` on 2026-09-13 (`1b6e746`/`586d736`). Centralized Patrick runtime on Railway (`patrick-gateway`), Replay Lab, and rolling judgment budget are live on hosted DEV.
 - **OS3 System Audit & Standardization:** complete and formally closed on 2026-09-14 (`os3-final-closeout.md`).
-- **OS4 Supabase Offload & Backup Foundation:** active / in progress. Three-Plane Hosted Activation landed on `main` at `e82862b` (Phase B1 remote transport / backup-foundation CLI and initial hosted offload); Core source-table retirement and milestone closeout open.
+- **OS4 Supabase Offload & Backup Foundation:** active / in progress. Three-Plane Hosted Activation landed on `main` at `e82862b` (Three-Plane hosted data cutover and backup-foundation CLI); Core source-table retirement, production backup deployment, and milestone closeout open.
 
 | System                | Documentation status | Implementation status                                                       |
 | --------------------- | -------------------- | --------------------------------------------------------------------------- |

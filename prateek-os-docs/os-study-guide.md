@@ -102,7 +102,7 @@ Workspaces give atomic cross-package changes, one lockfile, and root quality gat
 
 ### Multi-Plane Data Architecture (Supabase, Neon, and Backup Foundation)
 
-PostgreSQL supplies relational integrity, transactions, indexes, constraints, functions, and row-level security. Under OS4's Three-Plane architecture, live structured state is isolated into dedicated databases by domain: Core Supabase for Capture, Personal Ops, and Patrick Core state; dedicated News Radar Supabase for N1 ingestion, clustering, and editorial pipelines; and JobOps Neon for job search and demand intelligence. The `@prateek-os/backup-foundation` package provides cold offload and backup verification across planes. Databases are not treated as the eventual owner of durable personal memory, which belongs to the separate `prateek-brain` repository.
+PostgreSQL supplies relational integrity, transactions, indexes, constraints, functions, and row-level security. Under OS4's Three-Plane architecture, live structured state is isolated into dedicated databases by domain: Core Supabase for Capture, Personal Ops, and Patrick Core state; dedicated News Radar Supabase for N1 ingestion, clustering, and editorial pipelines; and JobOps Neon for job search and demand intelligence. The `@prateek-os/backup-foundation` package provides the accepted backup/restore foundation under active OS4 development; production scheduling, retention, NAS destination, restore drills, and any optional cold offload remain unfinished. Databases are not treated as the eventual owner of durable personal memory, which belongs to the separate `prateek-brain` repository.
 
 ### Discord
 
@@ -208,7 +208,7 @@ Environment variables supply configuration and secret references at runtime. The
 
 A macOS LaunchAgent is a per-user service definition. `KeepAlive` can restart a process after failure; a wrapper script can establish the correct working directory, executable paths, and private environment before launching Node.
 
-Prateek OS uses independent LaunchAgents for Patrick and, when installed, the Application Materials worker. Independent supervision prevents one workload's crash or long generation step from taking down Discord control. The management scripts and plist templates live under `ops/macos/application-materials/`.
+Prateek OS uses independent LaunchAgents for Patrick and, when active, the Application Materials worker. Independent supervision prevents one workload's crash or long generation step from taking down Discord control. The management scripts and plist templates live under `ops/macos/application-materials/`.
 
 Secrets belong in ignored files with restrictive permissions—commonly directory mode `0700` and file mode `0600`—or in an approved secret store. Wrappers should report only presence/readiness, never values.
 
@@ -463,7 +463,7 @@ flowchart TB
     Capture & PersonalOps --> CoreDB
     JobOps --> JobOpsDB
     Radar --> RadarDB
-    CoreDB & JobOpsDB & RadarDB -. offload .-> Backup
+    CoreDB & JobOpsDB & RadarDB -. backup / restore foundation .-> Backup
     PersonalOps --> Google
     Capture & Materials & Radar -. where justified .-> Models
 ```
@@ -494,6 +494,7 @@ flowchart LR
     Gateway --> Google[Google Calendar / Tasks]
     JobOpsCron --> Sources[Public job feeds / read-only Gmail]
     RadarCron --> NewsSources[RSS / HN / public news feeds]
+```
 
 ## 17. Glossary
 
@@ -537,4 +538,3 @@ Important implementation-repository paths:
 - `.github/workflows/ci.yml`
 - `supabase/migrations/`
 - `ops/macos/application-materials/`
-```

@@ -10,7 +10,7 @@ Application Materials is the preparation pipeline for tailored resumes and cover
 
 ## Status
 
-**DORMANT · RETIREMENT SCHEDULED IN J5.** The accepted persistence, recovery, validation, and approval architecture remains documented, but the local worker is intentionally not installed or running. Dedicated rehosting is deferred; full retirement of the subsystem is planned under J5. Requests can queue; processing is paused.
+**DORMANT · RETIREMENT SCHEDULED IN J5.** The accepted persistence, recovery, validation, and approval architecture remains documented, but the worker is dormant and not operating as an active owner workflow. Dedicated rehosting is deferred; owner-facing retirement and deactivation are scheduled in J5. Requests can queue; processing is paused.
 
 ## What to read
 

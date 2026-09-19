@@ -61,4 +61,4 @@ Do not paste secrets into Discord or chat. Capture the bounded error/status and 
 
 ## Planned improvements
 
-OS4 multi-plane storage and local cold-offload completion, future R1 (Reference Library, unfrozen scope), J5, and cross-system query routing are planned or future. They are not current platform capabilities.
+OS4 production backup/restore deployment and remaining verification, future R1 (Reference Library, unfrozen scope), J5, and cross-system query routing are planned or future. They are not current platform capabilities.
