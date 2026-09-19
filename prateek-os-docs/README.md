@@ -47,7 +47,7 @@ flowchart LR
     C & PO --> DB1[(Core Supabase)]
     JO --> DB2[(JobOps Neon)]
     N1 --> DB3[(News Radar Supabase)]
-    DB1 & DB2 & DB3 -. backup / restore foundation .-> BF[@prateek-os/backup-foundation\nOS4 IN PROGRESS]
+    DB1 & DB2 & DB3 -. backup / restore foundation .-> BF["@prateek-os/backup-foundation<br/>OS4 IN PROGRESS"]
 ```
 
 Patrick is shown above as the interaction layer connecting people to capabilities, not as another domain system. See the [Patrick documentation](patrick/README.md).

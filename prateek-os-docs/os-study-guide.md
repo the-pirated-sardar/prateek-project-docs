@@ -446,7 +446,7 @@ flowchart TB
       CoreDB[(Core Supabase)]
       JobOpsDB[(JobOps Neon)]
       RadarDB[(News Radar Supabase)]
-      Backup[@prateek-os/backup-foundation\nOS4 IN PROGRESS]
+      Backup["@prateek-os/backup-foundation<br/>OS4 IN PROGRESS"]
     end
     Google[Google Calendar / Tasks]
     Models[Model providers\nbounded seams]
